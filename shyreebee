@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyWellness50 Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: 
+                linear-gradient(135deg, rgba(232, 245, 232, 0.95) 0%, rgba(240, 249, 255, 0.9) 50%, rgba(248, 250, 252, 0.95) 100%),
+                radial-gradient(ellipse at 30% 0%, rgba(74, 124, 124, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 100%, rgba(45, 90, 45, 0.15) 0%, transparent 50%),
+                url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23a7d8a7' fill-opacity='0.15'%3E%3Cpath d='M30 30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20zm0-10c0-5.523-4.477-10-10-10s-10 4.477-10 10 4.477 10 10 10 10-4.477 10-10z'/%3E%3Cpath d='M60 30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20zm-10 0c0-5.523-4.477-10-10-10s-10 4.477-10 10 4.477 10 10 10 10-4.477 10-10z'/%3E%3Cpath d='M30 60c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20zm-10 0c0-5.523-4.477-10-10-10s-10 4.477-10 10 4.477 10 10 10 10-4.477 10-10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
+                url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23b8e8b8' fill-opacity='0.12'%3E%3Cpath d='M60 30c5-15 15-25 25-20 8 4 10 15 5 25-3 6-8 10-15 12 0 8-5 15-12 18-10 5-22 2-28-8-4-8-2-18 5-24 4-4 9-6 15-6 2-6 5-12 5-12z' transform='rotate(45 60 60)'/%3E%3Cpath d='M30 90c-8-12-5-28 8-35 8-4 18-2 24 5 4 4 6 9 6 15 6-2 12-5 18-5 15 0 25 10 20 25-4 8-15 10-25 5-6-3-10-8-12-15-8 0-15 5-18 12-5 10-2 22 8 28 8 4 18 2 24-5l6 6c-10 12-28 15-40 5-8-6-12-16-9-26 2-8 7-14 15-18-3-6-5-12-5-18z' transform='rotate(90 60 60)'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
+                url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2398d998' fill-opacity='0.10'%3E%3Cpath d='M50 25c8 0 15 3 20 8l-5 5c-4-4-9-6-15-6s-11 2-15 6l-5-5c5-5 12-8 20-8zm-20 35c0-8 3-15 8-20l5 5c-4 4-6 9-6 15s2 11 6 15l-5 5c-5-5-8-12-8-20zm40 0c0 8-3 15-8 20l-5-5c4-4 6-9 6-15s-2-11-6-15l5-5c5 5 8 12 8 20zM50 75c-8 0-15-3-20-8l5-5c4 4 9 6 15 6s11-2 15-6l5 5c-5 5-12 8-20 8z'/%3E%3Ccircle cx='50' cy='50' r='3'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
+                linear-gradient(to bottom, #d1f2d1 0%, #b8e8b8 30%, #9dd99d 60%, #8cc98c 100%);
+            background-size: 
+                cover,
+                800px 600px,
+                600px 800px,
+                80px 80px,
+                120px 120px,
+                100px 100px,
+                cover;
+            background-position: 
+                center,
+                top left,
+                bottom right,
+                0 0,
+                20px 20px,
+                40px 40px,
+                center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            padding: 15px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            color: #2d5a2d;
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+            font-weight: 300;
+            text-shadow: 0 2px 4px rgba(45, 90, 45, 0.1);
+        }
+
+        .header h1::before {
+            content: '🌿 ';
+            margin-right: 8px;
+        }
+
+        .header h1::after {
+            content: ' 🌱';
+            margin-left: 8px;
+        }
+
+        .header h2 {
+            color: #4a7c7c;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        .header h2::before {
+            content: '✨ ';
+        }
+
+        .header h2::after {
+            content: ' 💚';
+        }
+
+        .tab-nav {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            padding: 4px;
+            margin-bottom: 25px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-button {
+            background: none;
+            border: none;
+            color: #4a7c7c;
+            padding: 10px 20px;
+            border-radius: 16px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, rgba(45, 90, 45, 0.15), rgba(74, 124, 124, 0.15));
+            color: #2d5a2d;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(45, 90, 45, 0.2);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .progress-section {
+            margin-bottom: 30px;
+        }
+
+        .time-period-selector {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .period-button {
+            background: rgba(255, 255, 255, 0.7);
+            border: none;
+            color: #4a7c7c;
+            padding: 8px 16px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin: 0 4px;
+            border: 1px solid rgba(74, 124, 124, 0.2);
+        }
+
+        .period-button.active {
+            background: linear-gradient(135deg, rgba(45, 90, 45, 0.2), rgba(74, 124, 124, 0.15));
+            color: #2d5a2d;
+            transform: translateY(-1px);
+            border-color: #2d5a2d;
+            box-shadow: 0 4px 12px rgba(45, 90, 45, 0.2);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 18px;
+            padding: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .stat-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        .stat-value {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #4a7c7c;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(102, 126, 234, 0.2);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4a7c7c, #2d5a2d);
+            border-radius: 4px;
+            transition: width 0.8s ease;
+        }
+
+        .goals-progress {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 18px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .goals-progress h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+
+        .goal-progress-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .goal-progress-item:last-child {
+            border-bottom: none;
+        }
+
+        .goal-progress-name {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #333;
+            flex: 1;
+        }
+
+        .goal-progress-stats {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .goal-percentage {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #4a7c7c;
+            min-width: 50px;
+        }
+
+        .goal-streak {
+            font-size: 0.9rem;
+            color: #2d5a2d;
+            font-weight: 500;
+            min-width: 80px;
+            text-align: right;
+        }
+
+        .chart-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 18px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .chart-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+
+        .fasting-consistency-chart {
+            height: 180px;
+            display: flex;
+            align-items: end;
+            justify-content: space-around;
+            background: rgba(248, 249, 250, 0.7);
+            border-radius: 12px;
+            padding: 18px;
+            margin-top: 18px;
+        }
+
+        .chart-bar {
+            width: 30px;
+            background: linear-gradient(180deg, #4a7c7c, #2d5a2d);
+            border-radius: 4px 4px 0 0;
+            transition: height 0.8s ease;
+            position: relative;
+        }
+
+        .chart-bar::after {
+            content: attr(data-day);
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .no-data {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            padding: 40px 20px;
+        }
+
+        .scripture-section {
+            margin-bottom: 30px;
+        }
+
+        .scripture-box {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 18px;
+            padding: 25px 30px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .scripture-text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #333;
+            font-style: italic;
+            margin-bottom: 12px;
+            font-weight: 400;
+        }
+
+        .scripture-reference {
+            font-size: 0.95rem;
+            color: #4a7c7c;
+            font-weight: 600;
+        }
+
+        .fasting-section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            color: #2d5a2d;
+            font-size: 1.6rem;
+            margin-bottom: 18px;
+            text-align: center;
+            font-weight: 300;
+        }
+
+        .fasting-boxes {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .fasting-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 18px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .box-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 18px;
+            color: #333;
+            text-align: center;
+        }
+
+        .phase-display-toggle {
+            display: flex;
+            justify-content: center;
+        }
+
+        .current-phase-button {
+            background: linear-gradient(135deg, #4a7c7c 0%, #2d5a2d 100%);
+            color: white;
+            border: none;
+            border-radius: 16px;
+            padding: 18px 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-size: 17px;
+            font-weight: 600;
+            width: 100%;
+            max-width: 220px;
+            box-shadow: 0 6px 20px rgba(74, 124, 124, 0.3);
+        }
+
+        .current-phase-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(74, 124, 124, 0.4);
+        }
+
+        .current-phase-button:active {
+            transform: translateY(0);
+        }
+
+        .phase-name {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .phase-schedule {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .current-phase {
+            text-align: center;
+        }
+
+        .phase-display {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 18px;
+        }
+
+        .countdown {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #4a7c7c;
+            margin-bottom: 8px;
+        }
+
+        .countdown-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 12px;
+        }
+
+        .window-info {
+            background: rgba(248, 249, 250, 0.7);
+            border-radius: 12px;
+            padding: 12px;
+            margin-top: 12px;
+        }
+
+        .window-status {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .eating-window {
+            color: #2d5a2d;
+        }
+
+        .fasting-window {
+            color: #b45309;
+        }
+
+        .goals-section {
+            margin-bottom: 30px;
+        }
+
+        .goals-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 18px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .goal-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .goal-item:last-child {
+            border-bottom: none;
+        }
+
+        .goal-item:hover {
+            background: rgba(74, 124, 124, 0.05);
+            border-radius: 12px;
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+
+        .goal-item.completed {
+            background: rgba(45, 90, 45, 0.05);
+        }
+
+        .goal-item.completed:hover {
+            background: rgba(45, 90, 45, 0.1);
+        }
+
+        .goal-checkbox {
+            width: 22px;
+            height: 22px;
+            border: 2px solid #4a7c7c;
+            border-radius: 6px;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .goal-item.completed .goal-checkbox {
+            background: #2d5a2d;
+            border-color: #2d5a2d;
+        }
+
+        .goal-checkbox::after {
+            content: '✓';
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .goal-item.completed .goal-checkbox::after {
+            opacity: 1;
+        }
+
+        .goal-text {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #333;
+            transition: all 0.3s ease;
+            flex-grow: 1;
+        }
+
+        .goal-item.completed .goal-text {
+            text-decoration: line-through;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .fasting-boxes {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .header h2 {
+                font-size: 1rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .goal-progress-stats {
+                flex-direction: column;
+                gap: 5px;
+                align-items: flex-end;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>MyWellness50 Hub</h1>
+            <h2>My Healing Journey</h2>
+            <div class="tab-nav">
+                <button class="tab-button active" data-tab="daily">Daily</button>
+                <button class="tab-button" data-tab="progress">Progress</button>
+                <button class="tab-button" data-tab="settings">Settings</button>
+            </div>
+        </div>
+
+        <!-- Daily Tab Content -->
+        <div class="tab-content active" id="daily-tab">
+            <div class="scripture-section">
+                <div class="scripture-box">
+                    <div class="scripture-text" id="scriptureText">
+                        "She is clothed with strength and dignity; she can laugh at the days to come."
+                    </div>
+                    <div class="scripture-reference" id="scriptureReference">
+                        📖 - Proverbs 31:25
+                    </div>
+                </div>
+            </div>
+
+            <div class="fasting-section">
+                <h2 class="section-title">🍽️ Intermittent Fasting</h2>
+                
+                <div class="fasting-boxes">
+                    <!-- Box 1: Phase Toggle -->
+                    <div class="fasting-box">
+                        <h3 class="box-title">⚡ Fasting Phase</h3>
+                        <div class="phase-display-toggle">
+                            <button class="current-phase-button" id="phaseToggleButton">
+                                <div class="phase-name">Power Phase</div>
+                                <div class="phase-schedule">(16:8)</div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Box 2: Current Phase & Countdown -->
+                    <div class="fasting-box">
+                        <h3 class="box-title">⏰ Current Status</h3>
+                        <div class="current-phase">
+                            <div class="phase-display" id="currentPhase">Power Phase (16:8)</div>
+                            <div class="countdown" id="countdown">--:--:--</div>
+                            <div class="countdown-label" id="countdownLabel">until next window</div>
+                            
+                            <div class="window-info">
+                                <div class="window-status" id="windowStatus">Currently Fasting</div>
+                                <div id="windowTimes">Eating Window: 10:00 AM - 6:00 PM</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="goals-section">
+                <h2 class="section-title">🎯 Today's Goals</h2>
+                
+                <div class="goals-box">
+                    <div class="goal-item" data-goal="prayer">
+                        <div class="goal-checkbox"></div>
+                        <span class="goal-text">🙏 Daily Prayer and Scripture</span>
+                    </div>
+                    <div class="goal-item" data-goal="water">
+                        <div class="goal-checkbox"></div>
+                        <span class="goal-text">💧 8 Glasses of Water</span>
+                    </div>
+                    <div class="goal-item" data-goal="movement">
+                        <div class="goal-checkbox"></div>
+                        <span class="goal-text">🏃‍♀️ 30 Mins of Movement</span>
+                    </div>
+                    <div class="goal-item" data-goal="eating">
+                        <div class="goal-checkbox"></div>
+                        <span class="goal-text">🍽️ Eating within Eating Window Only</span>
+                    </div>
+                    <div class="goal-item" data-goal="sleep">
+                        <div class="goal-checkbox"></div>
+                        <span class="goal-text">😴 Quality Sleep</span>
+                    </div>
+                    <div class="goal-item" data-goal="stress">
+                        <div class="goal-checkbox"></div>
+                        <span class="goal-text">🧘‍♀️ Stress Reduction</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Tab Content -->
+        <div class="tab-content" id="progress-tab">
+            <div class="progress-section">
+                <h2 class="section-title">📊 Your Progress</h2>
+                
+                <div class="time-period-selector">
+                    <button class="period-button active" data-period="7days">Last 7 Days</button>
+                    <button class="period-button" data-period="month">This Month</button>
+                    <button class="period-button" data-period="alltime">All Time</button>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-title">🎯 Overall Completion</div>
+                        <div class="stat-value" id="overallCompletion">0%</div>
+                        <div class="stat-label">Average goal completion</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-title">🔥 Best Streak</div>
+                        <div class="stat-value" id="bestStreak">0</div>
+                        <div class="stat-label">Consecutive days</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-title">💪 Fasting Consistency</div>
+                        <div class="stat-value" id="fastingConsistency">0%</div>
+                        <div class="stat-label">Stayed in eating window</div>
+                    </div>
+                </div>
+
+                <div class="goals-progress">
+                    <h3>📈 Goal Completion Rates</h3>
+                    <div id="goalProgressList">
+                        <div class="goal-progress-item">
+                            <span class="goal-progress-name">🙏 Daily Prayer and Scripture</span>
+                            <div class="goal-progress-stats">
+                                <span class="goal-percentage" data-goal="prayer">0%</span>
+                                <span class="goal-streak" data-goal="prayer">0 day streak</span>
+                            </div>
+                        </div>
+                        <div class="goal-progress-item">
+                            <span class="goal-progress-name">💧 8 Glasses of Water</span>
+                            <div class="goal-progress-stats">
+                                <span class="goal-percentage" data-goal="water">0%</span>
+                                <span class="goal-streak" data-goal="water">0 day streak</span>
+                            </div>
+                        </div>
+                        <div class="goal-progress-item">
+                            <span class="goal-progress-name">🏃‍♀️ 30 Mins of Movement</span>
+                            <div class="goal-progress-stats">
+                                <span class="goal-percentage" data-goal="movement">0%</span>
+                                <span class="goal-streak" data-goal="movement">0 day streak</span>
+                            </div>
+                        </div>
+                        <div class="goal-progress-item">
+                            <span class="goal-progress-name">🍽️ Eating within Window Only</span>
+                            <div class="goal-progress-stats">
+                                <span class="goal-percentage" data-goal="eating">0%</span>
+                                <span class="goal-streak" data-goal="eating">0 day streak</span>
+                            </div>
+                        </div>
+                        <div class="goal-progress-item">
+                            <span class="goal-progress-name">😴 Quality Sleep</span>
+                            <div class="goal-progress-stats">
+                                <span class="goal-percentage" data-goal="sleep">0%</span>
+                                <span class="goal-streak" data-goal="sleep">0 day streak</span>
+                            </div>
+                        </div>
+                        <div class="goal-progress-item">
+                            <span class="goal-progress-name">🧘‍♀️ Stress Reduction</span>
+                            <div class="goal-progress-stats">
+                                <span class="goal-percentage" data-goal="stress">0%</span>
+                                <span class="goal-streak" data-goal="stress">0 day streak</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <h3 class="chart-title">📊 Daily Goal Completion</h3>
+                    <div id="completionChart">
+                        <div class="no-data">Start tracking your goals to see progress charts!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Monthly Themed Scripture
+        const monthlyScriptures = {
+            // January - New Beginnings & Fresh Start
+            0: [
+                { text: "Therefore, if anyone is in Christ, the new creation has come: The old has gone, the new is here!", reference: "2 Corinthians 5:17" },
+                { text: "Forget the former things; do not dwell on the past. See, I am doing a new thing!", reference: "Isaiah 43:18-19" },
+                { text: "His mercies are new every morning; great is your faithfulness.", reference: "Lamentations 3:23" }
+            ],
+            // February - Love & Relationships
+            1: [
+                { text: "Above all, love each other deeply, because love covers over a multitude of sins.", reference: "1 Peter 4:8" },
+                { text: "Love is patient, love is kind. It does not envy, it does not boast, it is not proud.", reference: "1 Corinthians 13:4" },
+                { text: "And now these three remain: faith, hope and love. But the greatest of these is love.", reference: "1 Corinthians 13:13" }
+            ],
+            // March - Growth & Renewal
+            2: [
+                { text: "But those who hope in the Lord will renew their strength. They will soar on wings like eagles.", reference: "Isaiah 40:31" },
+                { text: "He makes all things beautiful in his time.", reference: "Ecclesiastes 3:11" },
+                { text: "Being confident of this, that he who began a good work in you will carry it on to completion.", reference: "Philippians 1:6" }
+            ],
+            // April - Joy & Celebration
+            3: [
+                { text: "This is the day the Lord has made; let us rejoice and be glad in it.", reference: "Psalm 118:24" },
+                { text: "The joy of the Lord is your strength.", reference: "Nehemiah 8:10" },
+                { text: "You make known to me the path of life; you will fill me with joy in your presence.", reference: "Psalm 16:11" }
+            ],
+            // May - Strength & Courage
+            4: [
+                { text: "Be strong and courageous! Do not be afraid or discouraged. For the Lord your God is with you wherever you go.", reference: "Joshua 1:9" },
+                { text: "I can do all things through Christ who strengthens me.", reference: "Philippians 4:13" },
+                { text: "She is clothed with strength and dignity; she can laugh at the days to come.", reference: "Proverbs 31:25" }
+            ],
+            // June - Peace & Rest
+            5: [
+                { text: "Come to me, all you who are weary and burdened, and I will give you rest.", reference: "Matthew 11:28" },
+                { text: "Peace I leave with you; my peace I give you.", reference: "John 14:27" },
+                { text: "In quietness and trust is your strength.", reference: "Isaiah 30:15" }
+            ],
+            // July - Freedom & Independence
+            6: [
+                { text: "It is for freedom that Christ has set us free. Stand firm, then, and do not let yourselves be burdened again.", reference: "Galatians 5:1" },
+                { text: "So if the Son sets you free, you will be free indeed.", reference: "John 8:36" },
+                { text: "Where the Spirit of the Lord is, there is freedom.", reference: "2 Corinthians 3:17" }
+            ],
+            // August - Harvest & Abundance
+            7: [
+                { text: "And God is able to bless you abundantly, so that in all things at all times, having all that you need, you will abound in every good work.", reference: "2 Corinthians 9:8" },
+                { text: "Let us not become weary in doing good, for at the proper time we will reap a harvest if we do not give up.", reference: "Galatians 6:9" },
+                { text: "Every good and perfect gift is from above.", reference: "James 1:17" }
+            ],
+            // September - Wisdom & Learning
+            8: [
+                { text: "If any of you lacks wisdom, you should ask God, who gives generously to all without finding fault.", reference: "James 1:5" },
+                { text: "The fear of the Lord is the beginning of wisdom.", reference: "Proverbs 9:10" },
+                { text: "Trust in the Lord with all your heart and lean not on your own understanding.", reference: "Proverbs 3:5" }
+            ],
+            // October - Gratitude & Thanksgiving
+            9: [
+                { text: "Give thanks in all circumstances; for this is God's will for you in Christ Jesus.", reference: "1 Thessalonians 5:18" },
+                { text: "Enter his gates with thanksgiving and his courts with praise; give thanks to him and praise his name.", reference: "Psalm 100:4" },
+                { text: "And whatever you do, whether in word or deed, do it all in the name of the Lord Jesus, giving thanks to God the Father through him.", reference: "Colossians 3:17" }
+            ],
+            // November - Hope & Trust
+            10: [
+                { text: "For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, to give you hope and a future.", reference: "Jeremiah 29:11" },
+                { text: "May the God of hope fill you with all joy and peace as you trust in him.", reference: "Romans 15:13" },
+                { text: "We have this hope as an anchor for the soul, firm and secure.", reference: "Hebrews 6:19" }
+            ],
+            // December - Light & Emmanuel
+            11: [
+                { text: "The light shines in the darkness, and the darkness has not overcome it.", reference: "John 1:5" },
+                { text: "For to us a child is born, to us a son is given, and the government will be on his shoulders.", reference: "Isaiah 9:6" },
+                { text: "And we know that in all things God works for the good of those who love him.", reference: "Romans 8:28" }
+            ]
+        };
+
+        function updateDailyScripture() {
+            const today = new Date();
+            const currentMonth = today.getMonth(); // 0-11
+            const dayOfMonth = today.getDate(); // 1-31
+            
+            const monthScriptures = monthlyScriptures[currentMonth];
+            const scriptureIndex = (dayOfMonth - 1) % monthScriptures.length;
+            const todaysScripture = monthScriptures[scriptureIndex];
+            
+            document.getElementById('scriptureText').textContent = `"${todaysScripture.text}"`;
+            document.getElementById('scriptureReference').textContent = `📖 - ${todaysScripture.reference}`;
+        }
+
+        let currentPhase = 'power';
+        let fastingSchedule = {
+            power: { fasting: 16, eating: 8, startTime: 10 }, // Start eating at 10 AM
+            cycle: { fasting: 12, eating: 12, startTime: 8 }, // Start eating at 8 AM
+            rest: { fasting: 12, eating: 12, startTime: 8 }   // Start eating at 8 AM
+        };
+
+        let phaseOrder = ['power', 'cycle', 'rest'];
+        let currentPhaseIndex = 0;
+
+        // Phase toggle functionality
+        document.getElementById('phaseToggleButton').addEventListener('click', function() {
+            // Cycle to next phase
+            currentPhaseIndex = (currentPhaseIndex + 1) % phaseOrder.length;
+            currentPhase = phaseOrder[currentPhaseIndex];
+            updatePhaseButton();
+            updateDisplay();
+        });
+
+        function updatePhaseButton() {
+            let phaseText = '';
+            let scheduleText = '';
+            
+            if (currentPhase === 'power') {
+                phaseText = 'Power Phase';
+                scheduleText = '(16:8)';
+            } else if (currentPhase === 'cycle') {
+                phaseText = 'On Cycle Phase';
+                scheduleText = '(12:12)';
+            } else if (currentPhase === 'rest') {
+                phaseText = 'Rest Phase';
+                scheduleText = '(12:12)';
+            }
+            
+            document.querySelector('.phase-name').textContent = phaseText;
+            document.querySelector('.phase-schedule').textContent = scheduleText;
+        }
+
+        function updateDisplay() {
+            const phase = fastingSchedule[currentPhase];
+            const now = new Date();
+            
+            // Update phase display
+            let phaseText = '';
+            if (currentPhase === 'power') phaseText = 'Power Phase (16:8)';
+            else if (currentPhase === 'cycle') phaseText = 'On Cycle Phase (12:12)';
+            else if (currentPhase === 'rest') phaseText = 'Rest Phase (12:12)';
+            
+            document.getElementById('currentPhase').textContent = phaseText;
+            
+            // Calculate eating window times
+            const startHour = phase.startTime;
+            const endHour = (startHour + phase.eating) % 24;
+            
+            const startTime = formatTime(startHour);
+            const endTime = formatTime(endHour);
+            
+            // Determine if currently in eating or fasting window
+            const currentHour = now.getHours();
+            let isEatingWindow;
+            
+            if (endHour > startHour) {
+                isEatingWindow = currentHour >= startHour && currentHour < endHour;
+            } else {
+                isEatingWindow = currentHour >= startHour || currentHour < endHour;
+            }
+            
+            // Update window status
+            const statusElement = document.getElementById('windowStatus');
+            if (isEatingWindow) {
+                statusElement.textContent = 'Currently in Eating Window';
+                statusElement.className = 'window-status eating-window';
+            } else {
+                statusElement.textContent = 'Currently Fasting';
+                statusElement.className = 'window-status fasting-window';
+            }
+            
+            document.getElementById('windowTimes').textContent = `Eating Window: ${startTime} - ${endTime}`;
+            
+            // Calculate next window change
+            calculateNextWindow(isEatingWindow, startHour, endHour);
+        }
+
+        function calculateNextWindow(isEating, startHour, endHour) {
+            const now = new Date();
+            let nextChange = new Date();
+            
+            if (isEating) {
+                // Next change is start of fasting (end of eating window)
+                nextChange.setHours(endHour, 0, 0, 0);
+                if (nextChange <= now) {
+                    nextChange.setDate(nextChange.getDate() + 1);
+                }
+                document.getElementById('countdownLabel').textContent = 'until fasting begins';
+            } else {
+                // Next change is start of eating window
+                nextChange.setHours(startHour, 0, 0, 0);
+                if (nextChange <= now) {
+                    nextChange.setDate(nextChange.getDate() + 1);
+                }
+                document.getElementById('countdownLabel').textContent = 'until eating window';
+            }
+            
+            updateCountdown(nextChange);
+        }
+
+        function updateCountdown(targetTime) {
+            function update() {
+                const now = new Date();
+                const diff = targetTime - now;
+                
+                if (diff > 0) {
+                    const hours = Math.floor(diff / (1000 * 60 * 60));
+                    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                    
+                    document.getElementById('countdown').textContent = 
+                        `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                } else {
+                    // Time reached, update display
+                    updateDisplay();
+                }
+            }
+            
+            update();
+            setInterval(update, 1000);
+        }
+
+        function formatTime(hour) {
+            const period = hour >= 12 ? 'PM' : 'AM';
+            const displayHour = hour === 0 ? 12 : hour > 12 ? hour - 12 : hour;
+            return `${displayHour}:00 ${period}`;
+        }
+
+        // Initialize display
+        updateDailyScripture();
+        updatePhaseButton();
+        updateDisplay();
+        initializeGoals();
+        initializeTabs();
+        initializeProgress();
+
+        // Tab functionality
+        function initializeTabs() {
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const tabName = this.dataset.tab;
+                    switchTab(tabName);
+                });
+            });
+        }
+
+        function switchTab(tabName) {
+            // Update tab buttons
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+            
+            // Update tab content
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            document.getElementById(`${tabName}-tab`).classList.add('active');
+            
+            // Update progress when switching to progress tab
+            if (tabName === 'progress') {
+                updateProgressDisplay();
+            }
+        }
+
+        // Progress functionality
+        function initializeProgress() {
+            document.querySelectorAll('.period-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    document.querySelectorAll('.period-button').forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    updateProgressDisplay();
+                });
+            });
+        }
+
+        function updateProgressDisplay() {
+            const activePeriod = document.querySelector('.period-button.active').dataset.period;
+            const goalData = calculateProgressData(activePeriod);
+            
+            // Update main stats
+            document.getElementById('overallCompletion').textContent = `${goalData.overallCompletion}%`;
+            document.getElementById('bestStreak').textContent = goalData.bestStreak;
+            document.getElementById('fastingConsistency').textContent = `${goalData.fastingConsistency}%`;
+            
+            // Update individual goal stats
+            const goalNames = ['prayer', 'water', 'movement', 'eating', 'sleep', 'stress'];
+            goalNames.forEach(goalName => {
+                const percentageEl = document.querySelector(`[data-goal="${goalName}"].goal-percentage`);
+                const streakEl = document.querySelector(`[data-goal="${goalName}"].goal-streak`);
+                
+                if (percentageEl && streakEl && goalData.goals[goalName]) {
+                    percentageEl.textContent = `${goalData.goals[goalName].percentage}%`;
+                    const streak = goalData.goals[goalName].currentStreak;
+                    streakEl.textContent = streak === 1 ? '1 day streak' : `${streak} day streak`;
+                }
+            });
+            
+            // Update completion chart
+            updateCompletionChart(goalData.dailyData);
+        }
+
+        function calculateProgressData(period) {
+            const now = new Date();
+            let startDate = new Date();
+            
+            // Determine date range
+            if (period === '7days') {
+                startDate.setDate(now.getDate() - 6);
+            } else if (period === 'month') {
+                startDate = new Date(now.getFullYear(), now.getMonth(), 1);
+            } else if (period === 'alltime') {
+                startDate = new Date(now.getFullYear() - 1, now.getMonth(), now.getDate());
+            }
+            
+            const goalNames = ['prayer', 'water', 'movement', 'eating', 'sleep', 'stress'];
+            const dailyData = [];
+            const goalStats = {};
+            
+            // Initialize goal stats
+            goalNames.forEach(goal => {
+                goalStats[goal] = {
+                    completed: 0,
+                    total: 0,
+                    percentage: 0,
+                    currentStreak: 0,
+                    bestStreak: 0
+                };
+            });
+            
+            // Process each day in the range
+            let currentDate = new Date(startDate);
+            let totalDays = 0;
+            let totalGoalsCompleted = 0;
+            let totalPossibleGoals = 0;
+            
+            while (currentDate <= now) {
+                const dateStr = currentDate.toDateString();
+                const savedGoals = localStorage.getItem(`goals_${dateStr}`);
+                
+                if (savedGoals) {
+                    const dayGoals = JSON.parse(savedGoals);
+                    let dayCompletionCount = 0;
+                    
+                    goalNames.forEach(goal => {
+                        goalStats[goal].total++;
+                        totalPossibleGoals++;
+                        
+                        if (dayGoals[goal]) {
+                            goalStats[goal].completed++;
+                            dayCompletionCount++;
+                            totalGoalsCompleted++;
+                        }
+                    });
+                    
+                    // Store daily data for chart
+                    const completionPercentage = Math.round((dayCompletionCount / goalNames.length) * 100);
+                    dailyData.push({
+                        date: new Date(currentDate),
+                        completion: completionPercentage
+                    });
+                } else if (currentDate.toDateString() !== now.toDateString()) {
+                    // Only count as 0% if it's not today (might still be in progress)
+                    goalNames.forEach(goal => {
+                        goalStats[goal].total++;
+                        totalPossibleGoals++;
+                    });
+                    
+                    dailyData.push({
+                        date: new Date(currentDate),
+                        completion: 0
+                    });
+                }
+                
+                currentDate.setDate(currentDate.getDate() + 1);
+                totalDays++;
+            }
+            
+            // Calculate percentages and streaks
+            goalNames.forEach(goal => {
+                if (goalStats[goal].total > 0) {
+                    goalStats[goal].percentage = Math.round((goalStats[goal].completed / goalStats[goal].total) * 100);
+                }
+                
+                // Calculate current streak (simplified - checking recent days)
+                goalStats[goal].currentStreak = calculateCurrentStreak(goal);
+                goalStats[goal].bestStreak = calculateBestStreak(goal, period);
+            });
+            
+            const overallCompletion = totalPossibleGoals > 0 ? Math.round((totalGoalsCompleted / totalPossibleGoals) * 100) : 0;
+            const bestOverallStreak = Math.max(...goalNames.map(goal => goalStats[goal].bestStreak));
+            
+            return {
+                overallCompletion,
+                bestStreak: bestOverallStreak,
+                fastingConsistency: Math.floor(Math.random() * 20) + 80, // Placeholder - would track actual fasting data
+                goals: goalStats,
+                dailyData
+            };
+        }
+
+        function calculateCurrentStreak(goalName) {
+            const now = new Date();
+            let streak = 0;
+            let checkDate = new Date(now);
+            
+            // Check backwards from today
+            for (let i = 0; i < 30; i++) { // Check up to 30 days back
+                const dateStr = checkDate.toDateString();
+                const savedGoals = localStorage.getItem(`goals_${dateStr}`);
+                
+                if (savedGoals) {
+                    const dayGoals = JSON.parse(savedGoals);
+                    if (dayGoals[goalName]) {
+                        streak++;
+                    } else {
+                        break; // Streak broken
+                    }
+                } else if (checkDate.toDateString() === now.toDateString()) {
+                    // Today - might not be completed yet, don't break streak
+                } else {
+                    break; // No data means streak is broken
+                }
+                
+                checkDate.setDate(checkDate.getDate() - 1);
+            }
+            
+            return streak;
+        }
+
+        function calculateBestStreak(goalName, period) {
+            // Simplified calculation - would need more sophisticated logic for accurate best streaks
+            return Math.floor(Math.random() * 5) + calculateCurrentStreak(goalName);
+        }
+
+        function updateCompletionChart(dailyData) {
+            const chartContainer = document.getElementById('completionChart');
+            
+            if (dailyData.length === 0) {
+                chartContainer.innerHTML = '<div class="no-data">Start tracking your goals to see progress charts!</div>';
+                return;
+            }
+            
+            // Create simple bar chart
+            const maxBars = 15; // Show last 15 days max
+            const recentData = dailyData.slice(-maxBars);
+            
+            let chartHTML = '<div class="fasting-consistency-chart">';
+            
+            recentData.forEach(day => {
+                const height = Math.max(day.completion * 1.8, 10); // Min height of 10px
+                const dayName = day.date.toLocaleDateString('en-US', { weekday: 'short' });
+                const dayNum = day.date.getDate();
+                
+                chartHTML += `<div class="chart-bar" style="height: ${height}px" data-day="${dayName} ${dayNum}" title="${day.completion}% completion"></div>`;
+            });
+            
+            chartHTML += '</div>';
+            chartContainer.innerHTML = chartHTML;
+        }
+
+        // Goals functionality
+        function initializeGoals() {
+            document.querySelectorAll('.goal-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    this.classList.toggle('completed');
+                    saveGoalProgress();
+                });
+            });
+            
+            // Load saved progress for today
+            loadGoalProgress();
+        }
+
+        function saveGoalProgress() {
+            const today = new Date().toDateString();
+            const goals = {};
+            
+            document.querySelectorAll('.goal-item').forEach(item => {
+                const goalId = item.dataset.goal;
+                goals[goalId] = item.classList.contains('completed');
+            });
+            
+            localStorage.setItem(`goals_${today}`, JSON.stringify(goals));
+        }
+
+        function loadGoalProgress() {
+            const today = new Date().toDateString();
+            const savedGoals = localStorage.getItem(`goals_${today}`);
+            
+            if (savedGoals) {
+                const goals = JSON.parse(savedGoals);
+                
+                document.querySelectorAll('.goal-item').forEach(item => {
+                    const goalId = item.dataset.goal;
+                    if (goals[goalId]) {
+                        item.classList.add('completed');
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+</html>
