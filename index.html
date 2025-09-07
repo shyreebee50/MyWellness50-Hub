@@ -976,6 +976,129 @@
                 grid-template-columns: repeat(2, 1fr);
             }
         }
+        /* Enhanced Movement Tab Styles */
+        .movement-suggestions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .suggestion-card {
+            background: linear-gradient(135deg, #e8f5e8 0%, #f0f9f0 100%);
+            border: 2px solid transparent;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .suggestion-card:hover {
+            border-color: #4a7c59;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(74, 124, 89, 0.2);
+        }
+
+        .suggestion-card h5 {
+            color: #2d5a2d;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .suggestion-card p {
+            color: #4a7c59;
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        .activity-entry {
+            background: white;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-left: 4px solid #4a7c59;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .activity-info {
+            flex-grow: 1;
+        }
+
+        .activity-time {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 2rem;
+            color: #aaa;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            color: #2d5a2d;
+        }
+
+        #program-details {
+            line-height: 1.6;
+        }
+
+        #program-details h5 {
+            color: #2d5a2d;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        #program-details ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        #program-details li {
+            margin-bottom: 5px;
+        }
+
+        .safety-note {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 10px;
+            margin-top: 15px;
+            color: #856404;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
@@ -1334,6 +1457,8 @@
         </div>
 <!-- Movement Tab Content -->
         <div class="tab-content" id="movement-tab">
+         <!-- Movement Tab Content - Enhanced Version -->
+        <div class="tab-content" id="movement-tab">
             <div class="content-card">
                 <h2 class="section-title">Movement & Exercise</h2>
                 <div class="scripture-text">
@@ -1342,6 +1467,15 @@
                 <div class="scripture-reference">- Carol Welch</div>
             </div>
 
+            <!-- Movement Ideas Section -->
+            <div class="content-card">
+                <h4 class="section-title">Movement Ideas for Today</h4>
+                <div class="movement-suggestions" id="movement-suggestions">
+                    <!-- Daily suggestions will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Activity Logger Section -->
             <div class="content-card">
                 <h4 class="section-title">Today's Movement Log</h4>
                 <div style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center;">
@@ -1376,6 +1510,7 @@
                 </div>
             </div>
 
+            <!-- Movement Goals Section -->
             <div class="content-card">
                 <h4 class="section-title">Weekly Goals</h4>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
@@ -1400,7 +1535,17 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Movement Program Modal -->
+            <div id="program-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn">&times;</span>
+                    <h4 id="program-title"></h4>
+                    <div id="program-details"></div>
+                </div>
+            </div>
         </div>
+            </div>
         <!-- Settings Tab (placeholder) -->
         <div class="tab-content" id="settings-tab">
             <div class="content-card">
@@ -2331,6 +2476,185 @@
             initializeBodyTracking();
         });
     // Movement Tab Functions
+        // Enhanced Movement Tab Functions
+        
+        // Movement programs with detailed exercises
+        const movementPrograms = {
+            'morning-walk': {
+                title: 'Energizing Morning Walk',
+                details: `
+                    <h5>15-Minute Structured Walking Routine</h5>
+                    <ul>
+                        <li>Minutes 1-3: Start with slow, mindful walking to warm up</li>
+                        <li>Minutes 4-6: Increase to comfortable pace, focus on posture</li>
+                        <li>Minutes 7-9: Add arm swings and deeper breathing</li>
+                        <li>Minutes 10-12: Maintain steady rhythm, enjoy surroundings</li>
+                        <li>Minutes 13-15: Gradually slow down for cool-down</li>
+                    </ul>
+                    <h5>Focus Points:</h5>
+                    <ul>
+                        <li>Keep shoulders relaxed and spine straight</li>
+                        <li>Land softly on your feet, heel to toe</li>
+                        <li>Breathe naturally and deeply</li>
+                        <li>Stay hydrated and listen to your body</li>
+                    </ul>
+                    <div class="safety-note">
+                        <strong>Safety Tip:</strong> Choose safe, well-lit paths and wear comfortable, supportive shoes.
+                    </div>
+                `
+            },
+            'chair-stretches': {
+                title: 'Gentle Chair Stretches',
+                details: `
+                    <h5>10-Minute Seated Flexibility Routine</h5>
+                    <ul>
+                        <li><strong>Neck Rolls:</strong> 5 gentle circles each direction</li>
+                        <li><strong>Shoulder Shrugs:</strong> 10 slow lifts and releases</li>
+                        <li><strong>Shoulder Blade Squeezes:</strong> 10 times, hold for 3 seconds</li>
+                        <li><strong>Seated Spinal Twist:</strong> 15 seconds each side</li>
+                        <li><strong>Ankle Circles:</strong> 10 circles each direction, both feet</li>
+                        <li><strong>Calf Raises:</strong> 15 slow raises while seated</li>
+                    </ul>
+                    <h5>Breathing:</h5>
+                    <ul>
+                        <li>Take 3 deep breaths between each exercise</li>
+                        <li>Inhale during the release, exhale during the stretch</li>
+                        <li>Never hold your breath during stretches</li>
+                    </ul>
+                    <div class="safety-note">
+                        <strong>Remember:</strong> Stretch should feel good, never painful. Stop if you feel any discomfort.
+                    </div>
+                `
+            },
+            'balance-practice': {
+                title: 'Balance & Stability Practice',
+                details: `
+                    <h5>10-Minute Balance Enhancement</h5>
+                    <ul>
+                        <li><strong>Standing Support:</strong> Stand behind chair, practice standing on one foot (10 seconds each)</li>
+                        <li><strong>Heel-to-Toe Walking:</strong> 10 steps forward along a straight line</li>
+                        <li><strong>Side Steps:</strong> 10 steps sideways each direction with chair support</li>
+                        <li><strong>Weight Shifts:</strong> Shift weight side to side, hold for 5 seconds</li>
+                        <li><strong>Marching in Place:</strong> 20 steps with high knees (use chair for balance)</li>
+                    </ul>
+                    <h5>Progression Tips:</h5>
+                    <ul>
+                        <li>Week 1: Use chair for full support</li>
+                        <li>Week 2: Light touch on chair back</li>
+                        <li>Week 3: Chair nearby but hands free for some exercises</li>
+                    </ul>
+                    <div class="safety-note">
+                        <strong>Safety First:</strong> Always keep a sturdy chair or wall within reach for support.
+                    </div>
+                `
+            },
+            'garden-therapy': {
+                title: 'Garden Therapy Movement',
+                details: `
+                    <h5>20-Minute Safe Gardening Workout</h5>
+                    <ul>
+                        <li><strong>Warm-up:</strong> 2 minutes of gentle arm circles and shoulder rolls</li>
+                        <li><strong>Container Gardening:</strong> 8 minutes of seated or standing pot work</li>
+                        <li><strong>Gentle Weeding:</strong> 5 minutes using proper squatting technique</li>
+                        <li><strong>Watering Movement:</strong> 3 minutes of reaching and bending motions</li>
+                        <li><strong>Cool-down:</strong> 2 minutes of stretching and deep breathing</li>
+                    </ul>
+                    <h5>Proper Technique:</h5>
+                    <ul>
+                        <li>Bend knees, not your back when reaching down</li>
+                        <li>Use a garden stool or kneeler for comfort</li>
+                        <li>Take breaks every 10 minutes</li>
+                        <li>Stay hydrated and wear sun protection</li>
+                    </ul>
+                    <div class="safety-note">
+                        <strong>Joint Care:</strong> Use ergonomic tools and avoid prolonged kneeling or bending.
+                    </div>
+                `
+            },
+            'dance-break': {
+                title: 'Joyful Dance Break',
+                details: `
+                    <h5>10-Minute Gentle Dance Routine</h5>
+                    <ul>
+                        <li><strong>Minutes 1-2:</strong> Gentle swaying and arm movements</li>
+                        <li><strong>Minutes 3-4:</strong> Add simple steps in place</li>
+                        <li><strong>Minutes 5-6:</strong> Incorporate shoulder and hip movements</li>
+                        <li><strong>Minutes 7-8:</strong> Free-style dancing to your favorite music</li>
+                        <li><strong>Minutes 9-10:</strong> Slow down with graceful stretching movements</li>
+                    </ul>
+                    <h5>Dance Ideas:</h5>
+                    <ul>
+                        <li>Classic slow dancing steps</li>
+                        <li>Gentle salsa or swing movements</li>
+                        <li>Folk dance steps</li>
+                        <li>Simply move to music you love</li>
+                    </ul>
+                    <div class="safety-note">
+                        <strong>Have Fun:</strong> There's no wrong way to dance! Focus on joy and movement, not perfection.
+                    </div>
+                `
+            },
+            'water-movement': {
+                title: 'Low-Impact Water Exercises',
+                details: `
+                    <h5>20-Minute Pool or Bath Movement</h5>
+                    <ul>
+                        <li><strong>Water Walking:</strong> 5 minutes forward, backward, sideways</li>
+                        <li><strong>Arm Exercises:</strong> 5 minutes of arm circles and pushes through water</li>
+                        <li><strong>Leg Lifts:</strong> 5 minutes of gentle kicks and leg raises</li>
+                        <li><strong>Floating Stretches:</strong> 5 minutes of gentle stretching in water</li>
+                    </ul>
+                    <h5>Benefits:</h5>
+                    <ul>
+                        <li>Joint-friendly, low-impact exercise</li>
+                        <li>Natural resistance from water</li>
+                        <li>Improved circulation and flexibility</li>
+                        <li>Relaxing and therapeutic</li>
+                    </ul>
+                    <div class="safety-note">
+                        <strong>Water Safety:</strong> Exercise in safe, supervised areas and never alone if you're not a confident swimmer.
+                    </div>
+                `
+            }
+        };
+
+        // Daily movement suggestions
+        const dailyMovementSuggestions = [
+            { id: 'morning-walk', title: 'Energizing Morning Walk', desc: '15-minute gentle pace' },
+            { id: 'chair-stretches', title: 'Chair Stretches', desc: '10-minute flexibility' },
+            { id: 'balance-practice', title: 'Balance Practice', desc: '10-minute stability work' },
+            { id: 'garden-therapy', title: 'Garden Therapy', desc: '20-minute outdoor movement' },
+            { id: 'dance-break', title: 'Dance Break', desc: '10-minute joyful dancing' },
+            { id: 'water-movement', title: 'Water Movement', desc: '20-minute low-impact pool work' }
+        ];
+
+        // Display daily movement suggestions
+        function displayDailyMovementSuggestions() {
+            const container = document.getElementById('movement-suggestions');
+            if (!container) return;
+
+            container.innerHTML = dailyMovementSuggestions.map(suggestion => `
+                <div class="suggestion-card" onclick="showMovementProgram('${suggestion.id}')">
+                    <h5>${suggestion.title}</h5>
+                    <p>${suggestion.desc}</p>
+                </div>
+            `).join('');
+        }
+
+        // Show movement program modal
+        function showMovementProgram(programId) {
+            const modal = document.getElementById('program-modal');
+            const title = document.getElementById('program-title');
+            const details = document.getElementById('program-details');
+            
+            if (movementPrograms[programId]) {
+                title.textContent = movementPrograms[programId].title;
+                details.innerHTML = movementPrograms[programId].details;
+                modal.style.display = 'block';
+            }
+        }
+
+        // Enhanced log movement function
         function logMovement() {
             const activityType = document.getElementById('activity-type').value;
             const duration = document.getElementById('duration').value;
@@ -2368,6 +2692,7 @@
             updateWeeklyGoals();
         }
 
+        // Display today's logged activities
         function displayDailyActivities() {
             const container = document.getElementById('daily-activities');
             if (!container) return;
@@ -2382,16 +2707,17 @@
             }
             
             container.innerHTML = todayActivities.map(activity => `
-                <div style="background: white; border-radius: 8px; padding: 10px; margin-bottom: 10px; border-left: 4px solid #4a7c59; display: flex; justify-content: space-between; align-items: center;">
-                    <div>
+                <div class="activity-entry">
+                    <div class="activity-info">
                         <strong>${activity.type.charAt(0).toUpperCase() + activity.type.slice(1)}</strong> - 
                         ${activity.duration} minutes (${activity.intensity})
                     </div>
-                    <div style="color: #666; font-size: 0.9rem;">${activity.timestamp}</div>
+                    <div class="activity-time">${activity.timestamp}</div>
                 </div>
             `).join('');
         }
 
+        // Update weekly goals progress
         function updateWeeklyGoals() {
             const activities = JSON.parse(localStorage.getItem('movement-activities') || '{}');
             
@@ -2429,6 +2755,32 @@
             if (totalMinutesCount) totalMinutesCount.textContent = totalMinutes;
             if (totalMinutesProgress) totalMinutesProgress.style.width = `${Math.min((totalMinutes / 150) * 100, 100)}%`;
         }
+
+        // Initialize movement tab when switching to it
+        function initMovementTab() {
+            displayDailyMovementSuggestions();
+            displayDailyActivities();
+            updateWeeklyGoals();
+        }
+
+        // Close modal functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('program-modal');
+            const closeBtn = document.querySelector('.close-btn');
+            
+            if (closeBtn) {
+                closeBtn.onclick = function() {
+                    if (modal) modal.style.display = 'none';
+                };
+            }
+            
+            window.onclick = function(event) {
+                if (event.target === modal && modal) {
+                    modal.style.display = 'none';
+                }
+            };
+        });        
+    }
 
         // Initialize movement tab when switching to it
         function initMovementTab() {
