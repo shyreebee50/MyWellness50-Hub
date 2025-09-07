@@ -2260,3 +2260,903 @@
     </script>
 </body>
 </html>
+/* Movement Tab Styles - Add to existing CSS */
+.movement-cards {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.movement-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 18px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.movement-card h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2d5a2d;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.activity-selector {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-bottom: 12px;
+}
+
+.activity-option {
+    background: rgba(248, 250, 252, 0.8);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    padding: 8px 4px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 12px;
+}
+
+.activity-option:hover {
+    border-color: rgba(74, 124, 124, 0.3);
+}
+
+.activity-option.selected {
+    background: rgba(45, 90, 45, 0.1);
+    border-color: #2d5a2d;
+}
+
+.activity-icon {
+    font-size: 1.2rem;
+    margin-bottom: 3px;
+}
+
+.activity-name {
+    font-weight: 500;
+    color: #333;
+    font-size: 11px;
+}
+
+.input-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+    align-items: end;
+}
+
+.input-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-size: 11px;
+    color: #666;
+    margin-bottom: 3px;
+}
+
+.input-group input, .input-group select {
+    padding: 8px;
+    border: 2px solid rgba(74, 124, 124, 0.2);
+    border-radius: 6px;
+    font-size: 13px;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.input-group input:focus, .input-group select:focus {
+    outline: none;
+    border-color: #4a7c7c;
+}
+
+.log-btn {
+    background: linear-gradient(135deg, #4a7c7c, #2d5a2d);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.log-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(74, 124, 124, 0.3);
+}
+
+.weekly-summary {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.summary-stat {
+    flex: 1;
+}
+
+.summary-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #4a7c7c;
+    margin-bottom: 3px;
+}
+
+.summary-label {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.streak-display {
+    background: rgba(45, 90, 45, 0.1);
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.streak-number {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2d5a2d;
+    margin-bottom: 3px;
+}
+
+.streak-text {
+    color: #666;
+    font-size: 12px;
+}
+
+.activity-log {
+    max-height: 180px;
+    overflow-y: auto;
+    margin-bottom: 12px;
+}
+
+.log-entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 10px;
+    background: rgba(248, 250, 252, 0.8);
+    border-radius: 6px;
+    margin-bottom: 6px;
+    font-size: 13px;
+}
+
+.log-activity {
+    font-weight: 600;
+    color: #2d5a2d;
+    font-size: 13px;
+}
+
+.log-details {
+    color: #666;
+    font-size: 11px;
+}
+
+.log-date {
+    color: #999;
+    font-size: 11px;
+}
+
+.suggestions-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.suggestion-card {
+    background: rgba(248, 250, 252, 0.8);
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.suggestion-card:hover {
+    border-color: #4a7c7c;
+    background: rgba(74, 124, 124, 0.1);
+}
+
+.suggestion-card.expanded {
+    background: rgba(74, 124, 124, 0.05);
+    border-color: #4a7c7c;
+}
+
+.suggestion-icon {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+}
+
+.suggestion-title {
+    font-weight: 600;
+    color: #2d5a2d;
+    margin-bottom: 3px;
+    font-size: 12px;
+}
+
+.suggestion-description {
+    color: #666;
+    font-size: 10px;
+    line-height: 1.3;
+}
+
+.exercise-program {
+    display: none;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(74, 124, 124, 0.2);
+    text-align: left;
+}
+
+.exercise-program.show {
+    display: block;
+}
+
+.program-title {
+    font-weight: 600;
+    color: #2d5a2d;
+    font-size: 11px;
+    margin-bottom: 5px;
+}
+
+.exercise-steps {
+    list-style: none;
+    padding: 0;
+}
+
+.exercise-steps li {
+    font-size: 10px;
+    color: #555;
+    margin-bottom: 3px;
+    padding-left: 10px;
+    position: relative;
+}
+
+.exercise-steps li:before {
+    content: "•";
+    color: #4a7c7c;
+    position: absolute;
+    left: 0;
+}
+
+.program-note {
+    font-size: 9px;
+    color: #999;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+.week-indicator {
+    background: rgba(45, 90, 45, 0.1);
+    color: #2d5a2d;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 9px;
+    font-weight: 600;
+    margin-left: 5px;
+}
+
+@media (max-width: 768px) {
+    .movement-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .activity-selector {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .suggestions-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .input-row {
+        flex-direction: column;
+        gap: 8px;
+        align-items: stretch;
+    }
+}
+<!-- FIRST: Update tab navigation to include Movement tab -->
+<!-- Replace your existing tab-nav div with this updated version: -->
+
+<div class="tab-nav">
+    <button class="tab-button active" data-tab="daily">Daily</button>
+    <button class="tab-button" data-tab="faith">Faith</button>
+    <button class="tab-button" data-tab="movement">Movement</button>
+    <button class="tab-button" data-tab="progress">Progress</button>
+    <button class="tab-button" data-tab="settings">Settings</button>
+</div>
+
+<!-- SECOND: Add this Movement tab content after your existing tabs (before closing container div) -->
+
+<!-- Movement Tab Content -->
+<div class="tab-content" id="movement-tab">
+    <div class="movement-section">
+        <h2 class="section-title">🏃‍♀️ Movement & Exercise</h2>
+        
+        <div class="movement-cards">
+            <!-- Activity Logging Card -->
+            <div class="movement-card">
+                <h4>Log Today's Movement</h4>
+                
+                <div class="activity-selector" id="activitySelector">
+                    <!-- Activities will be populated by JavaScript based on daily rotation -->
+                </div>
+                
+                <div class="input-row">
+                    <div class="input-group">
+                        <label>Duration</label>
+                        <input type="number" id="movementDurationInput" placeholder="15" min="1">
+                    </div>
+                    <div class="input-group">
+                        <label>Unit</label>
+                        <select id="movementDurationUnit">
+                            <option value="minutes">Minutes</option>
+                            <option value="hours">Hours</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Intensity</label>
+                        <select id="movementIntensityLevel">
+                            <option value="gentle">Gentle</option>
+                            <option value="moderate">Moderate</option>
+                            <option value="vigorous">Vigorous</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div style="text-align: center;">
+                    <button class="log-btn" onclick="logMovementActivity()">Log Activity</button>
+                </div>
+            </div>
+
+            <!-- Weekly Summary Card -->
+            <div class="movement-card">
+                <h4>This Week's Progress</h4>
+                
+                <div class="streak-display">
+                    <div class="streak-number" id="movementStreak">0</div>
+                    <div class="streak-text">Day movement streak</div>
+                </div>
+                
+                <div class="weekly-summary">
+                    <div class="summary-stat">
+                        <div class="summary-value" id="weeklyActivities">0</div>
+                        <div class="summary-label">Activities</div>
+                    </div>
+                    <div class="summary-stat">
+                        <div class="summary-value" id="weeklyMinutes">0</div>
+                        <div class="summary-label">Minutes</div>
+                    </div>
+                    <div class="summary-stat">
+                        <div class="summary-value" id="weeklyDays">0</div>
+                        <div class="summary-label">Days Active</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Activity Log -->
+        <div class="movement-card" style="margin-bottom: 15px;">
+            <h4>Recent Activities</h4>
+            
+            <div class="activity-log" id="movementActivityLog">
+                <div class="no-data" style="padding: 30px 20px; text-align: center; color: #666; font-style: italic;">
+                    Start logging activities to see your progress here
+                </div>
+            </div>
+        </div>
+
+        <!-- Movement Suggestions -->
+        <div class="movement-card">
+            <h4>Movement Ideas for Today</h4>
+            
+            <div class="suggestions-grid" id="movementSuggestions">
+                <!-- Suggestions will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- THIRD: Add this JavaScript code at the end of your existing script section -->
+
+<script>
+// Movement Tab JavaScript - Add to existing script section
+
+// Movement activity data and progression system
+const movementActivities = {
+    walking: { icon: '🚶‍♀️', name: 'Walking' },
+    stairs: { icon: '🪜', name: 'Stairs' },
+    stretching: { icon: '🤸‍♀️', name: 'Stretching' },
+    swimming: { icon: '🏊‍♀️', name: 'Swimming' },
+    cycling: { icon: '🚴‍♀️', name: 'Cycling' },
+    strength: { icon: '💪', name: 'Strength' },
+    dancing: { icon: '💃', name: 'Dancing' },
+    gardening: { icon: '🌱', name: 'Gardening' },
+    gym: { icon: '🏋️‍♀️', name: 'Gym' },
+    yoga: { icon: '🧘‍♀️', name: 'Yoga' },
+    balance: { icon: '⚖️', name: 'Balance' },
+    tai_chi: { icon: '🥋', name: 'Tai Chi' },
+    pilates: { icon: '🤸', name: 'Pilates' },
+    hiking: { icon: '🥾', name: 'Hiking' },
+    water_aerobics: { icon: '💦', name: 'Water Aerobics' }
+};
+
+const movementSuggestionsBank = {
+    morning_walk: {
+        icon: '🚶‍♀️',
+        title: 'Morning Walk',
+        description: '15-30 minutes of gentle walking to start your day',
+        programs: {
+            1: {
+                title: '15-Minute Gentle Walk:',
+                steps: [
+                    'Start with 3 minutes of very slow walking',
+                    'Increase to comfortable pace for 8 minutes',
+                    'Focus on natural breathing and good posture',
+                    'Cool down with 4 minutes of slower walking',
+                    'End with gentle arm swings'
+                ],
+                note: 'Listen to your body and rest as needed'
+            },
+            2: {
+                title: '20-Minute Building Walk:',
+                steps: [
+                    'Warm up with 3 minutes of slow walking',
+                    'Comfortable pace for 12 minutes',
+                    'Add gentle arm movements while walking',
+                    'Include 2 brief stops to stretch calves',
+                    'Cool down with 3 minutes slower pace'
+                ],
+                note: 'Add slight inclines if comfortable'
+            },
+            3: {
+                title: '25-Minute Progressive Walk:',
+                steps: [
+                    'Warm up with 3 minutes gradual pace increase',
+                    'Maintain steady pace for 15 minutes',
+                    'Include 3 brief balance challenges (step on curb)',
+                    'Practice deep breathing every 5 minutes',
+                    'Cool down with 4 minutes and stretches'
+                ],
+                note: 'Focus on consistent rhythm and breathing'
+            }
+        }
+    },
+    chair_stretches: {
+        icon: '🤸‍♀️',
+        title: 'Chair Stretches',
+        description: '10 minutes of seated stretching exercises',
+        programs: {
+            1: {
+                title: '8-Minute Basic Chair Routine:',
+                steps: [
+                    'Neck rolls: 3 slow circles each direction',
+                    'Shoulder blade squeezes: 8 times, hold 3 seconds',
+                    'Seated spinal twist: Hold 10 seconds each side',
+                    'Ankle circles: 8 each direction, both feet',
+                    'Seated forward bend: Hold 15 seconds'
+                ],
+                note: 'Move slowly and never force a stretch'
+            },
+            2: {
+                title: '12-Minute Extended Routine:',
+                steps: [
+                    'Previous exercises plus:',
+                    'Seated side bends: 6 each side, hold 5 seconds',
+                    'Seated leg extensions: 8 each leg',
+                    'Upper back stretch: Hold 15 seconds',
+                    'Deep breathing with arm raises: 5 times'
+                ],
+                note: 'Add gentle holds and deeper breathing'
+            },
+            3: {
+                title: '15-Minute Full Body Chair Routine:',
+                steps: [
+                    'All previous exercises with longer holds',
+                    'Seated cat-cow stretches: 8 repetitions',
+                    'Shoulder rolls with resistance band',
+                    'Seated hamstring stretch: 20 seconds each leg',
+                    'End with relaxation pose for 2 minutes'
+                ],
+                note: 'Focus on connecting breath with movement'
+            }
+        }
+    },
+    balance_practice: {
+        icon: '⚖️',
+        title: 'Balance Practice',
+        description: 'Simple balance exercises for stability and coordination',
+        programs: {
+            1: {
+                title: '8-Minute Basic Balance:',
+                steps: [
+                    'Stand behind chair: Single leg stands, 5 seconds each',
+                    'Heel-to-toe walking: 6 steps holding chair rail',
+                    'Weight shifts: Side to side, hold 3 seconds',
+                    'Mini squats: 5 reps holding chair firmly',
+                    'Standing on toes: Hold 5 seconds, 3 times'
+                ],
+                note: 'Always keep chair support within reach'
+            },
+            2: {
+                title: '12-Minute Progressive Balance:',
+                steps: [
+                    'Single leg stands: 8 seconds each, light chair touch',
+                    'Heel-to-toe walking: 10 steps with finger on chair',
+                    'Weight shifts with small leg lifts',
+                    'Chair squats: 8 reps with controlled movement',
+                    'Toe stands: Hold 8 seconds, 4 times',
+                    'Simple arm movements while standing'
+                ],
+                note: 'Reduce chair dependence gradually'
+            },
+            3: {
+                title: '15-Minute Advanced Balance:',
+                steps: [
+                    'Single leg stands: 12 seconds, chair nearby',
+                    'Heel-to-toe: 15 steps without touching chair',
+                    'Standing leg swings: 6 each direction',
+                    'Balance challenges: Stand on pillow 10 seconds',
+                    'Walking with head movements',
+                    'Cool down with gentle stretches'
+                ],
+                note: 'Challenge yourself safely with chair as backup'
+            }
+        }
+    },
+    garden_therapy: {
+        icon: '🌱',
+        title: 'Garden Therapy',
+        description: 'Light gardening activities for movement',
+        programs: {
+            1: {
+                title: 'Gentle Garden Start:',
+                steps: [
+                    'Container watering: Use small watering can',
+                    'Deadheading flowers: Standing or seated',
+                    'Light weeding: Use long-handled tools',
+                    'Seed planting: At raised table height',
+                    'Take 2-minute breaks between activities'
+                ],
+                note: 'Use proper tools and avoid deep bending'
+            }
+        }
+    },
+    dance_break: {
+        icon: '💃',
+        title: 'Dance Break',
+        description: '10 minutes of dancing to favorite music',
+        programs: {
+            1: {
+                title: '8-Minute Gentle Dance:',
+                steps: [
+                    'Start with gentle swaying to music',
+                    'Add simple arm movements to the beat',
+                    'Include light stepping or marching in place',
+                    'Try gentle hip circles or shoulder rolls',
+                    'End with slow, calming movements'
+                ],
+                note: 'Dance at your comfort level - have fun!'
+            }
+        }
+    },
+    water_movement: {
+        icon: '🏊‍♀️',
+        title: 'Water Movement',
+        description: 'Low-impact swimming or water aerobics',
+        programs: {
+            1: {
+                title: '15-Minute Water Routine:',
+                steps: [
+                    'Water walking: 4 minutes forward and backward',
+                    'Arm circles in water: 8 each direction',
+                    'Leg swings: 8 each leg, front to back',
+                    'Gentle swimming or floating: 3-5 minutes',
+                    'Cool down with easy movements'
+                ],
+                note: 'Water temperature should be comfortable'
+            }
+        }
+    }
+};
+
+let selectedMovementActivity = 'walking';
+
+// Daily rotation logic
+function getDailyActivities() {
+    const today = new Date();
+    const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
+    
+    const activityKeys = Object.keys(movementActivities);
+    const rotatedActivities = [];
+    
+    // Select 9 activities based on day of year
+    for (let i = 0; i < 9; i++) {
+        const index = (dayOfYear + i) % activityKeys.length;
+        rotatedActivities.push(activityKeys[index]);
+    }
+    
+    return rotatedActivities;
+}
+
+function getDailySuggestions() {
+    const today = new Date();
+    const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
+    
+    const suggestionKeys = Object.keys(movementSuggestionsBank);
+    const rotatedSuggestions = [];
+    
+    // Select 6 suggestions based on day of year
+    for (let i = 0; i < 6; i++) {
+        const index = (dayOfYear + i) % suggestionKeys.length;
+        rotatedSuggestions.push(suggestionKeys[index]);
+    }
+    
+    return rotatedSuggestions;
+}
+
+// Get user's program week for an activity
+function getProgramWeek(activityType) {
+    const completions = JSON.parse(localStorage.getItem(`movement_completions_${activityType}`) || '0');
+    if (completions < 3) return 1;
+    if (completions < 7) return 2;
+    return 3;
+}
+
+// Initialize movement tab
+function initializeMovement() {
+    loadDailyActivities();
+    loadDailySuggestions();
+    updateMovementStats();
+    displayMovementLog();
+}
+
+function loadDailyActivities() {
+    const todaysActivities = getDailyActivities();
+    const activitySelector = document.getElementById('activitySelector');
+    
+    let html = '';
+    todaysActivities.forEach((activityKey, index) => {
+        const activity = movementActivities[activityKey];
+        const isSelected = index === 0 ? 'selected' : '';
+        if (index === 0) selectedMovementActivity = activityKey;
+        
+        html += `
+            <div class="activity-option ${isSelected}" data-activity="${activityKey}">
+                <div class="activity-icon">${activity.icon}</div>
+                <div class="activity-name">${activity.name}</div>
+            </div>
+        `;
+    });
+    
+    activitySelector.innerHTML = html;
+    
+    // Add click handlers
+    document.querySelectorAll('#activitySelector .activity-option').forEach(option => {
+        option.addEventListener('click', function() {
+            document.querySelectorAll('#activitySelector .activity-option').forEach(opt => opt.classList.remove('selected'));
+            this.classList.add('selected');
+            selectedMovementActivity = this.dataset.activity;
+        });
+    });
+}
+
+function loadDailySuggestions() {
+    const todaysSuggestions = getDailySuggestions();
+    const suggestionsGrid = document.getElementById('movementSuggestions');
+    
+    let html = '';
+    todaysSuggestions.forEach(suggestionKey => {
+        const suggestion = movementSuggestionsBank[suggestionKey];
+        const week = getProgramWeek(suggestionKey);
+        const program = suggestion.programs[week] || suggestion.programs[1];
+        
+        html += `
+            <div class="suggestion-card" onclick="toggleMovementProgram(this, '${suggestionKey}')">
+                <div class="suggestion-icon">${suggestion.icon}</div>
+                <div class="suggestion-title">${suggestion.title}<span class="week-indicator">Week ${week}</span></div>
+                <div class="suggestion-description">${suggestion.description}</div>
+                <div class="exercise-program">
+                    <div class="program-title">${program.title}</div>
+                    <ul class="exercise-steps">
+                        ${program.steps.map(step => `<li>${step}</li>`).join('')}
+                    </ul>
+                    <div class="program-note">${program.note}</div>
+                </div>
+            </div>
+        `;
+    });
+    
+    suggestionsGrid.innerHTML = html;
+}
+
+function toggleMovementProgram(card, activityType) {
+    const program = card.querySelector('.exercise-program');
+    const isExpanded = card.classList.contains('expanded');
+    
+    // Close all other programs
+    document.querySelectorAll('#movementSuggestions .suggestion-card').forEach(c => {
+        c.classList.remove('expanded');
+        c.querySelector('.exercise-program').classList.remove('show');
+    });
+    
+    // Toggle this program
+    if (!isExpanded) {
+        card.classList.add('expanded');
+        program.classList.add('show');
+        
+        // Track that user viewed this activity (could lead to progression)
+        const viewCount = parseInt(localStorage.getItem(`movement_views_${activityType}`) || '0');
+        localStorage.setItem(`movement_views_${activityType}`, viewCount + 1);
+    }
+}
+
+function logMovementActivity() {
+    const duration = document.getElementById('movementDurationInput').value;
+    const unit = document.getElementById('movementDurationUnit').value;
+    const intensity = document.getElementById('movementIntensityLevel').value;
+    
+    if (!duration || duration <= 0) {
+        alert('Please enter a valid duration');
+        return;
+    }
+    
+    const today = new Date().toDateString();
+    const activity = movementActivities[selectedMovementActivity];
+    
+    // Save activity
+    const movementLog = JSON.parse(localStorage.getItem('movementLog') || '[]');
+    const newEntry = {
+        date: today,
+        activity: selectedMovementActivity,
+        activityName: activity.name,
+        icon: activity.icon,
+        duration: parseInt(duration),
+        unit: unit,
+        intensity: intensity,
+        timestamp: new Date().toISOString()
+    };
+    
+    movementLog.push(newEntry);
+    localStorage.setItem('movementLog', JSON.stringify(movementLog));
+    
+    // Update completion count for progression
+    const completions = parseInt(localStorage.getItem(`movement_completions_${selectedMovementActivity}`) || '0');
+    localStorage.setItem(`movement_completions_${selectedMovementActivity}`, completions + 1);
+    
+    // Clear input and update displays
+    document.getElementById('movementDurationInput').value = '';
+    updateMovementStats();
+    displayMovementLog();
+    
+    // Check if user progressed to new week
+    const newWeek = getProgramWeek(selectedMovementActivity);
+    if (newWeek > Math.floor(completions / 3) + 1) {
+        setTimeout(() => {
+            alert(`Congratulations! You've progressed to Week ${newWeek} for ${activity.name}!`);
+            loadDailySuggestions(); // Refresh suggestions to show new week
+        }, 500);
+    }
+    
+    alert('Activity logged successfully!');
+}
+
+function updateMovementStats() {
+    const movementLog = JSON.parse(localStorage.getItem('movementLog') || '[]');
+    const today = new Date();
+    const weekAgo = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
+    
+    // Calculate week stats
+    const thisWeekEntries = movementLog.filter(entry => new Date(entry.date) >= weekAgo);
+    const weeklyActivities = thisWeekEntries.length;
+    const weeklyMinutes = thisWeekEntries.reduce((total, entry) => {
+        return total + (entry.unit === 'hours' ? entry.duration * 60 : entry.duration);
+    }, 0);
+    
+    const activeDaysThisWeek = new Set(thisWeekEntries.map(entry => entry.date)).size;
+    
+    // Calculate streak
+    let streak = 0;
+    let currentDate = new Date(today);
+    
+    for (let i = 0; i < 30; i++) { // Check last 30 days
+        const dateStr = currentDate.toDateString();
+        const hasActivity = movementLog.some(entry => entry.date === dateStr);
+        
+        if (hasActivity) {
+            streak++;
+        } else if (dateStr !== today.toDateString()) {
+            break; // Streak broken (unless it's today)
+        }
+        
+        currentDate.setDate(currentDate.getDate() - 1);
+    }
+    
+    // Update display
+    document.getElementById('movementStreak').textContent = streak;
+    document.getElementById('weeklyActivities').textContent = weeklyActivities;
+    document.getElementById('weeklyMinutes').textContent = weeklyMinutes;
+    document.getElementById('weeklyDays').textContent = activeDaysThisWeek;
+}
+
+function displayMovementLog() {
+    const movementLog = JSON.parse(localStorage.getItem('movementLog') || '[]');
+    const logContainer = document.getElementById('movementActivityLog');
+    
+    if (movementLog.length === 0) {
+        logContainer.innerHTML = '<div class="no-data" style="padding: 30px 20px; text-align: center; color: #666; font-style: italic;">Start logging activities to see your progress here</div>';
+        return;
+    }
+    
+    // Show last 8 entries
+    const recentEntries = movementLog.slice(-8).reverse();
+    
+    let html = '';
+    recentEntries.forEach(entry => {
+        const entryDate = new Date(entry.date);
+        const isToday = entry.date === new Date().toDateString();
+        const isYesterday = entryDate.getTime() === new Date().getTime() - 24 * 60 * 60 * 1000;
+        
+        let dateLabel = entryDate.toLocaleDateString();
+        if (isToday) dateLabel = 'Today';
+        else if (isYesterday) dateLabel = 'Yesterday';
+        else if (entryDate > new Date().getTime() - 7 * 24 * 60 * 60 * 1000) {
+            dateLabel = entryDate.toLocaleDateString('en-US', { weekday: 'short' });
+        }
+        
+        html += `
+            <div class="log-entry">
+                <div>
+                    <div class="log-activity">${entry.icon} ${entry.activityName}</div>
+                    <div class="log-details">${entry.duration} ${entry.unit} • ${entry.intensity} intensity</div>
+                </div>
+                <div class="log-date">${dateLabel}</div>
+            </div>
+        `;
+    });
+    
+    logContainer.innerHTML = html;
+}
+
+// Update the main initialization function
+document.addEventListener('DOMContentLoaded', function() {
+    // ... existing initialization code ...
+    
+    // Add movement tab initialization
+    initializeMovement();
+});
+
+// Update the existing switchTab function to include movement
+// Add this to your existing switchTab function:
+function switchTab(tabName) {
+    // Update tab buttons
+    document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+    document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+    
+    // Update tab content
+    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+    document.getElementById(`${tabName}-tab`).classList.add('active');
+    
+    // Update specific tab content when switching
+    if (tabName === 'progress') {
+        updateProgressDisplay();
+    } else if (tabName === 'faith') {
+        updateDailyVerse();
+    } else if (tabName === 'movement') {
+        updateMovementStats();
+        displayMovementLog();
+    }
+}
+</script>
