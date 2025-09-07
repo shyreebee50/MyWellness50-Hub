@@ -976,128 +976,6 @@
                 grid-template-columns: repeat(2, 1fr);
             }
         }
-        /* Movement Tab Styles */
-.movement-suggestions {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-    margin-bottom: 25px;
-}
-
-.suggestion-card {
-    background: linear-gradient(135deg, #e8f5e8 0%, #f0f9f0 100%);
-    border: 2px solid transparent;
-    border-radius: 12px;
-    padding: 15px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.suggestion-card:hover {
-    border-color: #4a7c59;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(74, 124, 89, 0.2);
-}
-
-.suggestion-card h5 {
-    color: #2d5a2d;
-    margin-bottom: 8px;
-    font-weight: 600;
-}
-
-.suggestion-card p {
-    color: #4a7c59;
-    font-size: 0.9rem;
-    margin-bottom: 0;
-}
-
-.activity-entry {
-    background: white;
-    border-radius: 8px;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-left: 4px solid #4a7c59;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.activity-info {
-    flex-grow: 1;
-}
-
-.activity-time {
-    color: #666;
-    font-size: 0.9rem;
-}
-
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.modal-content {
-    background-color: white;
-    margin: 5% auto;
-    padding: 30px;
-    border-radius: 15px;
-    width: 90%;
-    max-width: 600px;
-    max-height: 80vh;
-    overflow-y: auto;
-    position: relative;
-}
-
-.close-btn {
-    position: absolute;
-    top: 15px;
-    right: 25px;
-    font-size: 2rem;
-    color: #aaa;
-    cursor: pointer;
-}
-
-.close-btn:hover {
-    color: #2d5a2d;
-}
-
-#program-details {
-    line-height: 1.6;
-}
-
-#program-details h5 {
-    color: #2d5a2d;
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
-
-#program-details ul {
-    margin-left: 20px;
-    margin-bottom: 15px;
-}
-
-#program-details li {
-    margin-bottom: 5px;
-}
-
-.safety-note {
-    background: #fff3cd;
-    border: 1px solid #ffeaa7;
-    border-radius: 8px;
-    padding: 10px;
-    margin-top: 15px;
-    color: #856404;
-    font-size: 0.9rem;
-}
     </style>
 </head>
 <body>
@@ -1108,7 +986,6 @@
             <div class="tab-nav">
                 <button class="tab-button active" data-tab="daily">Daily</button>
                 <button class="tab-button" data-tab="faith">Faith</button>
-                <button class="tab-button" data-tab="movement">Movement</button>
                 <button class="tab-button" data-tab="progress">Progress</button>
                 <button class="tab-button" data-tab="settings">Settings</button>
             </div>
@@ -1454,93 +1331,7 @@
                 </div>
             </div>
         </div>
-<div class="tab-content" id="movement-tab">
-            <div class="content-card">
-                <h2 class="section-title">Movement & Exercise</h2>
-                <div class="scripture-text">
-                    "Movement is a medicine for creating change in a person's physical, emotional, and mental states."
-                </div>
-                <div class="scripture-reference">- Carol Welch</div>
-            </div>
 
-            <!-- Movement Ideas Section -->
-            <div class="content-card">
-                <h4 class="section-title">Movement Ideas for Today</h4>
-                <div class="movement-suggestions" id="movement-suggestions">
-                    <!-- Daily suggestions will be populated by JavaScript -->
-                </div>
-            </div>
-
-            <!-- Activity Logger Section -->
-            <div class="content-card">
-                <h4 class="section-title">Today's Movement Log</h4>
-                <div style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center;">
-                    <select id="activity-type" style="padding: 8px; border: 2px solid rgba(74, 124, 124, 0.2); border-radius: 8px;">
-                        <option value="">Select Activity</option>
-                        <option value="walking">Walking</option>
-                        <option value="stretching">Stretching</option>
-                        <option value="yoga">Yoga</option>
-                        <option value="strength">Light Strength Training</option>
-                        <option value="dance">Dancing</option>
-                        <option value="swimming">Swimming</option>
-                        <option value="gardening">Gardening</option>
-                        <option value="balance">Balance Exercises</option>
-                        <option value="tai-chi">Tai Chi</option>
-                    </select>
-                    
-                    <input type="number" id="duration" placeholder="Minutes" min="1" max="300" style="padding: 8px; border: 2px solid rgba(74, 124, 124, 0.2); border-radius: 8px;">
-                    
-                    <select id="intensity" style="padding: 8px; border: 2px solid rgba(74, 124, 124, 0.2); border-radius: 8px;">
-                        <option value="light">Light</option>
-                        <option value="moderate">Moderate</option>
-                        <option value="vigorous">Vigorous</option>
-                    </select>
-                    
-                    <button onclick="logMovement()" class="add-btn">Log Activity</button>
-                </div>
-                
-                <div id="daily-activities" style="min-height: 100px; background: rgba(248, 249, 250, 0.7); border-radius: 8px; padding: 15px;">
-                    <div style="text-align: center; color: #999; padding: 20px;">
-                        No activities logged today. Start moving!
-                    </div>
-                </div>
-            </div>
-
-            <!-- Movement Goals Section -->
-            <div class="content-card">
-                <h4 class="section-title">Weekly Goals</h4>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-                    <div style="background: linear-gradient(135deg, #f0f9f0 0%, #e8f5e8 100%); border-radius: 12px; padding: 20px; text-align: center;">
-                        <h5 style="color: #2d5a2d; margin-bottom: 10px;">Active Days</h5>
-                        <div style="font-size: 1.2rem; font-weight: 600; color: #4a7c59; margin-bottom: 10px;">
-                            <span id="active-days-count">0</span> / 5 days
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" id="active-days-progress"></div>
-                        </div>
-                    </div>
-                    
-                    <div style="background: linear-gradient(135deg, #f0f9f0 0%, #e8f5e8 100%); border-radius: 12px; padding: 20px; text-align: center;">
-                        <h5 style="color: #2d5a2d; margin-bottom: 10px;">Total Minutes</h5>
-                        <div style="font-size: 1.2rem; font-weight: 600; color: #4a7c59; margin-bottom: 10px;">
-                            <span id="total-minutes-count">0</span> / 150 min
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" id="total-minutes-progress"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Movement Program Modal -->
-            <div id="program-modal" class="modal">
-                <div class="modal-content">
-                    <span class="close-btn">&times;</span>
-                    <h4 id="program-title"></h4>
-                    <div id="program-details"></div>
-                </div>
-            </div>
-        </div>
         <!-- Settings Tab (placeholder) -->
         <div class="tab-content" id="settings-tab">
             <div class="content-card">
@@ -1793,338 +1584,679 @@
             document.getElementById(`${tabName}-tab`).classList.add('active');
             
             // Update progress when switching to progress tab
-           if (tabName === 'progress') {
-            updateProgressDisplay();
+            if (tabName === 'progress') {
+                updateProgressDisplay();
+            }
+
+            // Update faith content when switching to faith tab
+            if (tabName === 'faith') {
+                updateDailyVerse();
+            }
         }
 
-        // Update faith content when switching to faith tab
-        if (tabName === 'faith') {
-            updateDailyVerse();
+        // Goals functionality
+        function initializeGoals() {
+            document.querySelectorAll('.goal-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    this.classList.toggle('completed');
+                    saveGoalProgress();
+                });
+            });
+            
+            // Load saved progress for today
+            loadGoalProgress();
         }
 
-        // Initialize movement tab when switching to it
-        if (tabName === 'movement') {
-            initMovementTab();
+        function saveGoalProgress() {
+            const today = new Date().toDateString();
+            const goals = {};
+            
+            document.querySelectorAll('.goal-item').forEach(item => {
+                const goalId = item.dataset.goal;
+                goals[goalId] = item.classList.contains('completed');
+            });
+            
+            localStorage.setItem(`goals_${today}`, JSON.stringify(goals));
         }
-    }
 
-    // Movement Tab Functions
-
-    // Movement programs with detailed exercises
-    const movementPrograms = {
-        'morning-walk': {
-            title: 'Energizing Morning Walk',
-            details: `
-                <h5>15-Minute Structured Walking Routine</h5>
-                <ul>
-                    <li>Minutes 1-3: Start with slow, mindful walking to warm up</li>
-                    <li>Minutes 4-6: Increase to comfortable pace, focus on posture</li>
-                    <li>Minutes 7-9: Add arm swings and deeper breathing</li>
-                    <li>Minutes 10-12: Maintain steady rhythm, enjoy surroundings</li>
-                    <li>Minutes 13-15: Gradually slow down for cool-down</li>
-                </ul>
-                <h5>Focus Points:</h5>
-                <ul>
-                    <li>Keep shoulders relaxed and spine straight</li>
-                    <li>Land softly on your feet, heel to toe</li>
-                    <li>Breathe naturally and deeply</li>
-                    <li>Stay hydrated and listen to your body</li>
-                </ul>
-                <div class="safety-note">
-                    <strong>Safety Tip:</strong> Choose safe, well-lit paths and wear comfortable, supportive shoes.
-                </div>
-            `
-        },
-        'chair-stretches': {
-            title: 'Gentle Chair Stretches',
-            details: `
-                <h5>10-Minute Seated Flexibility Routine</h5>
-                <ul>
-                    <li><strong>Neck Rolls:</strong> 5 gentle circles each direction</li>
-                    <li><strong>Shoulder Shrugs:</strong> 10 slow lifts and releases</li>
-                    <li><strong>Shoulder Blade Squeezes:</strong> 10 times, hold for 3 seconds</li>
-                    <li><strong>Seated Spinal Twist:</strong> 15 seconds each side</li>
-                    <li><strong>Ankle Circles:</strong> 10 circles each direction, both feet</li>
-                    <li><strong>Calf Raises:</strong> 15 slow raises while seated</li>
-                </ul>
-                <h5>Breathing:</h5>
-                <ul>
-                    <li>Take 3 deep breaths between each exercise</li>
-                    <li>Inhale during the release, exhale during the stretch</li>
-                    <li>Never hold your breath during stretches</li>
-                </ul>
-                <div class="safety-note">
-                    <strong>Remember:</strong> Stretch should feel good, never painful. Stop if you feel any discomfort.
-                </div>
-            `
-        },
-        'balance-practice': {
-            title: 'Balance & Stability Practice',
-            details: `
-                <h5>10-Minute Balance Enhancement</h5>
-                <ul>
-                    <li><strong>Standing Support:</strong> Stand behind chair, practice standing on one foot (10 seconds each)</li>
-                    <li><strong>Heel-to-Toe Walking:</strong> 10 steps forward along a straight line</li>
-                    <li><strong>Side Steps:</strong> 10 steps sideways each direction with chair support</li>
-                    <li><strong>Weight Shifts:</strong> Shift weight side to side, hold for 5 seconds</li>
-                    <li><strong>Marching in Place:</strong> 20 steps with high knees (use chair for balance)</li>
-                </ul>
-                <h5>Progression Tips:</h5>
-                <ul>
-                    <li>Week 1: Use chair for full support</li>
-                    <li>Week 2: Light touch on chair back</li>
-                    <li>Week 3: Chair nearby but hands free for some exercises</li>
-                </ul>
-                <div class="safety-note">
-                    <strong>Safety First:</strong> Always keep a sturdy chair or wall within reach for support.
-                </div>
-            `
-        },
-        'garden-therapy': {
-            title: 'Garden Therapy Movement',
-            details: `
-                <h5>20-Minute Safe Gardening Workout</h5>
-                <ul>
-                    <li><strong>Warm-up:</strong> 2 minutes of gentle arm circles and shoulder rolls</li>
-                    <li><strong>Container Gardening:</strong> 8 minutes of seated or standing pot work</li>
-                    <li><strong>Gentle Weeding:</strong> 5 minutes using proper squatting technique</li>
-                    <li><strong>Watering Movement:</strong> 3 minutes of reaching and bending motions</li>
-                    <li><strong>Cool-down:</strong> 2 minutes of stretching and deep breathing</li>
-                </ul>
-                <h5>Proper Technique:</h5>
-                <ul>
-                    <li>Bend knees, not your back when reaching down</li>
-                    <li>Use a garden stool or kneeler for comfort</li>
-                    <li>Take breaks every 10 minutes</li>
-                    <li>Stay hydrated and wear sun protection</li>
-                </ul>
-                <div class="safety-note">
-                    <strong>Joint Care:</strong> Use ergonomic tools and avoid prolonged kneeling or bending.
-                </div>
-            `
-        },
-        'dance-break': {
-            title: 'Joyful Dance Break',
-            details: `
-                <h5>10-Minute Gentle Dance Routine</h5>
-                <ul>
-                    <li><strong>Minutes 1-2:</strong> Gentle swaying and arm movements</li>
-                    <li><strong>Minutes 3-4:</strong> Add simple steps in place</li>
-                    <li><strong>Minutes 5-6:</strong> Incorporate shoulder and hip movements</li>
-                    <li><strong>Minutes 7-8:</strong> Free-style dancing to your favorite music</li>
-                    <li><strong>Minutes 9-10:</strong> Slow down with graceful stretching movements</li>
-                </ul>
-                <h5>Dance Ideas:</h5>
-                <ul>
-                    <li>Classic slow dancing steps</li>
-                    <li>Gentle salsa or swing movements</li>
-                    <li>Folk dance steps</li>
-                    <li>Simply move to music you love</li>
-                </ul>
-                <div class="safety-note">
-                    <strong>Have Fun:</strong> There's no wrong way to dance! Focus on joy and movement, not perfection.
-                </div>
-            `
-        },
-        'water-movement': {
-            title: 'Low-Impact Water Exercises',
-            details: `
-                <h5>20-Minute Pool or Bath Movement</h5>
-                <ul>
-                    <li><strong>Water Walking:</strong> 5 minutes forward, backward, sideways</li>
-                    <li><strong>Arm Exercises:</strong> 5 minutes of arm circles and pushes through water</li>
-                    <li><strong>Leg Lifts:</strong> 5 minutes of gentle kicks and leg raises</li>
-                    <li><strong>Floating Stretches:</strong> 5 minutes of gentle stretching in water</li>
-                </ul>
-                <h5>Benefits:</h5>
-                <ul>
-                    <li>Joint-friendly, low-impact exercise</li>
-                    <li>Natural resistance from water</li>
-                    <li>Improved circulation and flexibility</li>
-                    <li>Relaxing and therapeutic</li>
-                </ul>
-                <div class="safety-note">
-                    <strong>Water Safety:</strong> Exercise in safe, supervised areas and never alone if you're not a confident swimmer.
-                </div>
-            `
+        function loadGoalProgress() {
+            const today = new Date().toDateString();
+            const savedGoals = localStorage.getItem(`goals_${today}`);
+            
+            if (savedGoals) {
+                const goals = JSON.parse(savedGoals);
+                
+                document.querySelectorAll('.goal-item').forEach(item => {
+                    const goalId = item.dataset.goal;
+                    if (goals[goalId]) {
+                        item.classList.add('completed');
+                    }
+                });
+            }
         }
-    };
 
-    // Daily movement suggestions
-    const dailyMovementSuggestions = [
-        { id: 'morning-walk', title: 'Energizing Morning Walk', desc: '15-minute gentle pace' },
-        { id: 'chair-stretches', title: 'Chair Stretches', desc: '10-minute flexibility' },
-        { id: 'balance-practice', title: 'Balance Practice', desc: '10-minute stability work' },
-        { id: 'garden-therapy', title: 'Garden Therapy', desc: '20-minute outdoor movement' },
-        { id: 'dance-break', title: 'Dance Break', desc: '10-minute joyful dancing' },
-        { id: 'water-movement', title: 'Water Movement', desc: '20-minute low-impact pool work' }
-    ];
+        // Faith functionality
+        function initializeFaith() {
+            // Faith activity tracker
+            document.querySelectorAll('.tracker-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    this.classList.toggle('completed');
+                    saveFaithProgress();
+                });
+            });
 
-    // Display daily movement suggestions
-    function displayDailyMovementSuggestions() {
-        const container = document.getElementById('movement-suggestions');
-        if (!container) return;
+            // Auto-save gratitude inputs
+            document.addEventListener('input', function(e) {
+                if (e.target.classList.contains('gratitude-text')) {
+                    saveGratitudeInputs();
+                }
+            });
+            
+            document.addEventListener('blur', function(e) {
+                if (e.target.classList.contains('gratitude-text')) {
+                    saveGratitudeInputs();
+                }
+            });
 
-        container.innerHTML = dailyMovementSuggestions.map(suggestion => `
-            <div class="suggestion-card" onclick="showMovementProgram('${suggestion.id}')">
-                <h5>${suggestion.title}</h5>
-                <p>${suggestion.desc}</p>
-            </div>
-        `).join('');
-    }
-
-    // Show movement program modal
-    function showMovementProgram(programId) {
-        const modal = document.getElementById('program-modal');
-        const title = document.getElementById('program-title');
-        const details = document.getElementById('program-details');
-        
-        if (movementPrograms[programId]) {
-            title.textContent = movementPrograms[programId].title;
-            details.innerHTML = movementPrograms[programId].details;
-            modal.style.display = 'block';
+            // Load saved progress for today
+            loadFaithProgress();
+            loadGratitudeInputs();
         }
-    }
 
-    // Log movement activity
-    function logMovement() {
-        const activityType = document.getElementById('activity-type').value;
-        const duration = document.getElementById('duration').value;
-        const intensity = document.getElementById('intensity').value;
-        
-        if (!activityType || !duration) {
-            alert('Please select an activity type and enter duration.');
-            return;
+        function saveFaithProgress() {
+            const today = new Date().toDateString();
+            const completed = [];
+            
+            document.querySelectorAll('.tracker-item.completed').forEach(item => {
+                completed.push(item.dataset.activity);
+            });
+            
+            localStorage.setItem(`faith_${today}`, JSON.stringify(completed));
         }
-        
-        const today = new Date().toISOString().split('T')[0];
-        let activities = JSON.parse(localStorage.getItem('movement-activities') || '{}');
-        
-        if (!activities[today]) {
-            activities[today] = [];
-        }
-        
-        const newActivity = {
-            type: activityType,
-            duration: parseInt(duration),
-            intensity: intensity,
-            timestamp: new Date().toLocaleTimeString()
-        };
-        
-        activities[today].push(newActivity);
-        localStorage.setItem('movement-activities', JSON.stringify(activities));
-        
-        // Clear form
-        document.getElementById('activity-type').value = '';
-        document.getElementById('duration').value = '';
-        document.getElementById('intensity').value = 'light';
-        
-        // Refresh displays
-        displayDailyActivities();
-        updateWeeklyGoals();
-    }
 
-    // Display today's logged activities
-    function displayDailyActivities() {
-        const container = document.getElementById('daily-activities');
-        if (!container) return;
-        
-        const today = new Date().toISOString().split('T')[0];
-        const activities = JSON.parse(localStorage.getItem('movement-activities') || '{}');
-        const todayActivities = activities[today] || [];
-        
-        if (todayActivities.length === 0) {
-            container.innerHTML = '<div style="text-align: center; color: #999; padding: 20px;">No activities logged today. Start moving!</div>';
-            return;
+        function loadFaithProgress() {
+            const today = new Date().toDateString();
+            const saved = localStorage.getItem(`faith_${today}`);
+            
+            if (saved) {
+                const completed = JSON.parse(saved);
+                completed.forEach(activity => {
+                    const item = document.querySelector(`[data-activity="${activity}"]`);
+                    if (item) item.classList.add('completed');
+                });
+            }
         }
-        
-        container.innerHTML = todayActivities.map(activity => `
-            <div class="activity-entry">
-                <div class="activity-info">
-                    <strong>${activity.type.charAt(0).toUpperCase() + activity.type.slice(1)}</strong> - 
-                    ${activity.duration} minutes (${activity.intensity})
-                </div>
-                <div class="activity-time">${activity.timestamp}</div>
-            </div>
-        `).join('');
-    }
 
-    // Update weekly goals progress
-    function updateWeeklyGoals() {
-        const activities = JSON.parse(localStorage.getItem('movement-activities') || '{}');
-        
-        // Get current week's data
-        const today = new Date();
-        const weekStart = new Date(today.setDate(today.getDate() - today.getDay()));
-        const weekDays = [];
-        
-        for (let i = 0; i < 7; i++) {
-            const day = new Date(weekStart);
-            day.setDate(weekStart.getDate() + i);
-            weekDays.push(day.toISOString().split('T')[0]);
+        function saveGratitudeInputs() {
+            const today = new Date().toDateString();
+            const gratitudeInputs = {};
+            
+            document.querySelectorAll('.gratitude-text').forEach((div, index) => {
+                gratitudeInputs[`gratitude_${index}`] = div.textContent;
+            });
+            
+            localStorage.setItem(`gratitude_${today}`, JSON.stringify(gratitudeInputs));
         }
-        
-        let activeDays = 0;
-        let totalMinutes = 0;
-        
-        weekDays.forEach(day => {
-            if (activities[day] && activities[day].length > 0) {
-                activeDays++;
-                activities[day].forEach(activity => {
-                    totalMinutes += activity.duration;
+
+        function loadGratitudeInputs() {
+            const today = new Date().toDateString();
+            const saved = localStorage.getItem(`gratitude_${today}`);
+            
+            if (saved) {
+                const gratitudeInputs = JSON.parse(saved);
+                
+                Object.keys(gratitudeInputs).forEach(key => {
+                    if (key.startsWith('gratitude_')) {
+                        const index = key.split('_')[1];
+                        const gratitudeDiv = document.querySelectorAll('.gratitude-text')[index];
+                        if (gratitudeDiv && gratitudeInputs[key]) {
+                            gratitudeDiv.textContent = gratitudeInputs[key];
+                        }
+                    }
+                });
+            }
+        }
+
+        // Daily verse rotation for Faith tab
+        const faithVerses = [
+            { text: "Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight.", reference: "Proverbs 3:5-6" },
+            { text: "She is clothed with strength and dignity; she can laugh at the days to come.", reference: "Proverbs 31:25" },
+            { text: "Do you not know that your bodies are temples of the Holy Spirit, who is in you, whom you have received from God? You are not your own.", reference: "1 Corinthians 6:19" },
+            { text: "For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, to give you hope and a future.", reference: "Jeremiah 29:11" },
+            { text: "I can do all things through Christ who strengthens me.", reference: "Philippians 4:13" },
+            { text: "Be strong and courageous! Do not be afraid or discouraged. For the Lord your God is with you wherever you go.", reference: "Joshua 1:9" },
+            { text: "Cast all your anxiety on him because he cares for you.", reference: "1 Peter 5:7" },
+            { text: "Come to me, all you who are weary and burdened, and I will give you rest.", reference: "Matthew 11:28" },
+            { text: "For we are God's handiwork, created in Christ Jesus to do good works, which God prepared in advance for us to do.", reference: "Ephesians 2:10" },
+            { text: "The Lord your God is with you, the Mighty Warrior who saves. He will take great delight in you; in his love he will no longer rebuke you, but will rejoice over you with singing.", reference: "Zephaniah 3:17" }
+        ];
+
+        function updateDailyVerse() {
+            const today = new Date();
+            const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
+            const verseIndex = dayOfYear % faithVerses.length;
+            const todaysVerse = faithVerses[verseIndex];
+            
+            const verseElement = document.getElementById('dailyVerse');
+            const referenceElement = document.getElementById('dailyReference');
+            
+            if (verseElement && referenceElement) {
+                verseElement.textContent = `"${todaysVerse.text}"`;
+                referenceElement.textContent = todaysVerse.reference;
+            }
+        }
+
+        // Progress functionality
+        function initializeProgress() {
+            document.querySelectorAll('.period-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    document.querySelectorAll('.period-button').forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    updateProgressDisplay();
+                });
+            });
+        }
+
+        function updateProgressDisplay() {
+            const activePeriod = document.querySelector('.period-button.active').dataset.period;
+            const goalData = calculateProgressData(activePeriod);
+            
+            // Update main stats
+            document.getElementById('overallCompletion').textContent = `${goalData.overallCompletion}%`;
+            document.getElementById('bestStreak').textContent = goalData.bestStreak;
+            document.getElementById('fastingConsistency').textContent = `${goalData.fastingConsistency}%`;
+            
+            // Update individual goal stats
+            const goalNames = ['prayer', 'water', 'movement', 'eating', 'sleep', 'stress'];
+            goalNames.forEach(goalName => {
+                const percentageEl = document.querySelector(`[data-goal="${goalName}"].goal-percentage`);
+                const streakEl = document.querySelector(`[data-goal="${goalName}"].goal-streak`);
+                
+                if (percentageEl && streakEl && goalData.goals[goalName]) {
+                    percentageEl.textContent = `${goalData.goals[goalName].percentage}%`;
+                    const streak = goalData.goals[goalName].currentStreak;
+                    streakEl.textContent = streak === 1 ? '1 day streak' : `${streak} day streak`;
+                }
+            });
+            
+            // Update completion chart
+            updateCompletionChart(goalData.dailyData);
+        }
+
+        function calculateProgressData(period) {
+            const now = new Date();
+            let startDate = new Date();
+            
+            // Determine date range
+            if (period === '7days') {
+                startDate.setDate(now.getDate() - 6);
+            } else if (period === 'month') {
+                startDate = new Date(now.getFullYear(), now.getMonth(), 1);
+            } else if (period === 'alltime') {
+                startDate = new Date(now.getFullYear() - 1, now.getMonth(), now.getDate());
+            }
+            
+            const goalNames = ['prayer', 'water', 'movement', 'eating', 'sleep', 'stress'];
+            const dailyData = [];
+            const goalStats = {};
+            
+            // Initialize goal stats
+            goalNames.forEach(goal => {
+                goalStats[goal] = {
+                    completed: 0,
+                    total: 0,
+                    percentage: 0,
+                    currentStreak: 0,
+                    bestStreak: 0
+                };
+            });
+            
+            // Process each day in the range
+            let currentDate = new Date(startDate);
+            let totalDays = 0;
+            let totalGoalsCompleted = 0;
+            let totalPossibleGoals = 0;
+            
+            while (currentDate <= now) {
+                const dateStr = currentDate.toDateString();
+                const savedGoals = localStorage.getItem(`goals_${dateStr}`);
+                
+                if (savedGoals) {
+                    const dayGoals = JSON.parse(savedGoals);
+                    let dayCompletionCount = 0;
+                    
+                    goalNames.forEach(goal => {
+                        goalStats[goal].total++;
+                        totalPossibleGoals++;
+                        
+                        if (dayGoals[goal]) {
+                            goalStats[goal].completed++;
+                            dayCompletionCount++;
+                            totalGoalsCompleted++;
+                        }
+                    });
+                    
+                    // Store daily data for chart
+                    const completionPercentage = Math.round((dayCompletionCount / goalNames.length) * 100);
+                    dailyData.push({
+                        date: new Date(currentDate),
+                        completion: completionPercentage
+                    });
+                } else if (currentDate.toDateString() !== now.toDateString()) {
+                    // Only count as 0% if it's not today (might still be in progress)
+                    goalNames.forEach(goal => {
+                        goalStats[goal].total++;
+                        totalPossibleGoals++;
+                    });
+                    
+                    dailyData.push({
+                        date: new Date(currentDate),
+                        completion: 0
+                    });
+                }
+                
+                currentDate.setDate(currentDate.getDate() + 1);
+                totalDays++;
+            }
+            
+            // Calculate percentages and streaks
+            goalNames.forEach(goal => {
+                if (goalStats[goal].total > 0) {
+                    goalStats[goal].percentage = Math.round((goalStats[goal].completed / goalStats[goal].total) * 100);
+                }
+                
+                // Calculate current streak (simplified - checking recent days)
+                goalStats[goal].currentStreak = calculateCurrentStreak(goal);
+                goalStats[goal].bestStreak = calculateBestStreak(goal, period);
+            });
+            
+            const overallCompletion = totalPossibleGoals > 0 ? Math.round((totalGoalsCompleted / totalPossibleGoals) * 100) : 0;
+            const bestOverallStreak = Math.max(...goalNames.map(goal => goalStats[goal].bestStreak));
+            
+            return {
+                overallCompletion,
+                bestStreak: bestOverallStreak,
+                fastingConsistency: Math.floor(Math.random() * 20) + 80, // Placeholder - would track actual fasting data
+                goals: goalStats,
+                dailyData
+            };
+        }
+
+        function calculateCurrentStreak(goalName) {
+            const now = new Date();
+            let streak = 0;
+            let checkDate = new Date(now);
+            
+            // Check backwards from today
+            for (let i = 0; i < 30; i++) { // Check up to 30 days back
+                const dateStr = checkDate.toDateString();
+                const savedGoals = localStorage.getItem(`goals_${dateStr}`);
+                
+                if (savedGoals) {
+                    const dayGoals = JSON.parse(savedGoals);
+                    if (dayGoals[goalName]) {
+                        streak++;
+                    } else {
+                        break; // Streak broken
+                    }
+                } else if (checkDate.toDateString() === now.toDateString()) {
+                    // Today - might not be completed yet, don't break streak
+                } else {
+                    break; // No data means streak is broken
+                }
+                
+                checkDate.setDate(checkDate.getDate() - 1);
+            }
+            
+            return streak;
+        }
+
+        function calculateBestStreak(goalName, period) {
+            // Simplified calculation - would need more sophisticated logic for accurate best streaks
+            return Math.floor(Math.random() * 5) + calculateCurrentStreak(goalName);
+        }
+
+        function updateCompletionChart(dailyData) {
+            const chartContainer = document.getElementById('completionChart');
+            
+            if (dailyData.length === 0) {
+                chartContainer.innerHTML = '<div class="no-data">Start tracking your goals to see progress charts!</div>';
+                return;
+            }
+            
+            // Create simple bar chart
+            const maxBars = 15; // Show last 15 days max
+            const recentData = dailyData.slice(-maxBars);
+            
+            let chartHTML = '<div class="fasting-consistency-chart">';
+            
+            recentData.forEach(day => {
+                const height = Math.max(day.completion * 1.8, 10); // Min height of 10px
+                const dayName = day.date.toLocaleDateString('en-US', { weekday: 'short' });
+                const dayNum = day.date.getDate();
+                
+                chartHTML += `<div class="chart-bar" style="height: ${height}px" data-day="${dayName} ${dayNum}" title="${day.completion}% completion"></div>`;
+            });
+            
+            chartHTML += '</div>';
+            chartContainer.innerHTML = chartHTML;
+        }
+
+        // Body Progress Tracking Functions
+
+        // Weight Tracking
+        function addWeight() {
+            const weightInput = document.getElementById('weightInput');
+            const weightUnit = document.getElementById('weightUnit').value;
+            const weight = parseFloat(weightInput.value);
+            
+            if (!weight || weight <= 0) {
+                alert('Please enter a valid weight');
+                return;
+            }
+            
+            const today = new Date().toDateString();
+            const weightData = JSON.parse(localStorage.getItem('weightData') || '[]');
+            
+            // Check if entry for today already exists
+            const existingIndex = weightData.findIndex(entry => entry.date === today);
+            if (existingIndex !== -1) {
+                if (confirm('You already have a weight entry for today. Replace it?')) {
+                    weightData[existingIndex] = { date: today, weight, unit: weightUnit };
+                } else {
+                    return;
+                }
+            } else {
+                weightData.push({ date: today, weight, unit: weightUnit });
+            }
+            
+            // Sort by date
+            weightData.sort((a, b) => new Date(a.date) - new Date(b.date));
+            
+            localStorage.setItem('weightData', JSON.stringify(weightData));
+            weightInput.value = '';
+            
+            displayWeightData();
+            updateWeightChart();
+        }
+
+        function displayWeightData() {
+            const weightData = JSON.parse(localStorage.getItem('weightData') || '[]');
+            const weightList = document.getElementById('weightList');
+            
+            if (weightData.length === 0) {
+                weightList.innerHTML = '<div class="no-data" style="padding: 20px; text-align: center; color: #999;">Add your first weight entry to start tracking progress</div>';
+                return;
+            }
+            
+            // Show last 10 entries
+            const recentData = weightData.slice(-10);
+            
+            let html = '';
+            recentData.forEach((entry, index) => {
+                const date = new Date(entry.date).toLocaleDateString();
+                let changeClass = 'neutral';
+                let changeText = '';
+                
+                if (index > 0) {
+                    const prevWeight = recentData[index - 1].weight;
+                    const change = entry.weight - prevWeight;
+                    if (change > 0) {
+                        changeClass = 'positive';
+                        changeText = `+${change.toFixed(1)}`;
+                    } else if (change < 0) {
+                        changeClass = 'negative';
+                        changeText = change.toFixed(1);
+                    } else {
+                        changeText = '0.0';
+                    }
+                }
+                
+                html += `
+                    <div class="progress-item">
+                        <div>
+                            <div class="progress-value">${entry.weight} ${entry.unit}</div>
+                            <div class="progress-date">${date}</div>
+                        </div>
+                        ${changeText ? `<div class="progress-change ${changeClass}">${changeText} ${entry.unit}</div>` : ''}
+                    </div>
+                `;
+            });
+            
+            weightList.innerHTML = html;
+        }
+
+        function updateWeightChart() {
+            const weightData = JSON.parse(localStorage.getItem('weightData') || '[]');
+            const weightChart = document.getElementById('weightChart');
+            
+            if (weightData.length === 0) {
+                weightChart.innerHTML = '';
+                return;
+            }
+            
+            // Show last 15 entries for chart
+            const chartData = weightData.slice(-15);
+            const weights = chartData.map(entry => entry.weight);
+            const minWeight = Math.min(...weights);
+            const maxWeight = Math.max(...weights);
+            const range = maxWeight - minWeight || 1;
+            
+            let html = '';
+            chartData.forEach(entry => {
+                const height = Math.max(((entry.weight - minWeight) / range) * 60 + 10, 4);
+                html += `<div class="chart-point" style="height: ${height}px" title="${entry.weight} ${entry.unit}"></div>`;
+            });
+            
+            weightChart.innerHTML = html;
+        }
+
+        // Measurements Tracking
+        function addMeasurements() {
+            const inputs = ['waist', 'hips', 'chest', 'arms', 'thighs', 'neck'];
+            const measurements = {};
+            let hasData = false;
+            
+            inputs.forEach(input => {
+                const value = parseFloat(document.getElementById(input + 'Input').value);
+                if (value && value > 0) {
+                    measurements[input] = value;
+                    hasData = true;
+                }
+            });
+            
+            if (!hasData) {
+                alert('Please enter at least one measurement');
+                return;
+            }
+            
+            const unit = document.getElementById('measurementUnit').value;
+            const today = new Date().toDateString();
+            const measurementData = JSON.parse(localStorage.getItem('measurementData') || '[]');
+            
+            // Check if entry for today already exists
+            const existingIndex = measurementData.findIndex(entry => entry.date === today);
+            if (existingIndex !== -1) {
+                if (confirm('You already have measurements for today. Replace them?')) {
+                    measurementData[existingIndex] = { date: today, measurements, unit };
+                } else {
+                    return;
+                }
+            } else {
+                measurementData.push({ date: today, measurements, unit });
+            }
+            
+            // Sort by date
+            measurementData.sort((a, b) => new Date(a.date) - new Date(b.date));
+            
+            localStorage.setItem('measurementData', JSON.stringify(measurementData));
+            
+            // Clear inputs
+            inputs.forEach(input => {
+                document.getElementById(input + 'Input').value = '';
+            });
+            
+            displayMeasurementData();
+        }
+
+        function displayMeasurementData() {
+            const measurementData = JSON.parse(localStorage.getItem('measurementData') || '[]');
+            const measurementsList = document.getElementById('measurementsList');
+            
+            if (measurementData.length === 0) {
+                measurementsList.innerHTML = '<div class="no-data" style="padding: 20px; text-align: center; color: #999;">Add your first measurements to start tracking progress</div>';
+                return;
+            }
+            
+            // Show last 5 entries
+            const recentData = measurementData.slice(-5);
+            
+            let html = '';
+            recentData.forEach(entry => {
+                const date = new Date(entry.date).toLocaleDateString();
+                const measurements = entry.measurements;
+                
+                html += `
+                    <div class="progress-item" style="flex-direction: column; align-items: flex-start;">
+                        <div style="display: flex; justify-content: space-between; width: 100%; margin-bottom: 5px;">
+                            <strong>Measurements</strong>
+                            <span class="progress-date">${date}</span>
+                        </div>
+                        <div style="font-size: 12px; color: #666;">
+                            ${Object.entries(measurements).map(([key, value]) => 
+                                `${key.charAt(0).toUpperCase() + key.slice(1)}: ${value} ${entry.unit}`
+                            ).join(' • ')}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            measurementsList.innerHTML = html;
+        }
+
+        // Photo Upload Functions
+        function handlePhotoUpload(event) {
+            const files = event.target.files;
+            const photoType = document.getElementById('photoType').value;
+            
+            if (files.length === 0) return;
+            
+            Array.from(files).forEach(file => {
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        savePhoto(e.target.result, photoType);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+            
+            // Clear the input
+            event.target.value = '';
+        }
+
+        function savePhoto(imageData, type) {
+            const today = new Date().toDateString();
+            const photoData = JSON.parse(localStorage.getItem('photoData') || '[]');
+            
+            const photo = {
+                id: Date.now(),
+                date: today,
+                type: type,
+                image: imageData
+            };
+            
+            photoData.push(photo);
+            
+            // Sort by date
+            photoData.sort((a, b) => new Date(a.date) - new Date(b.date));
+            
+            localStorage.setItem('photoData', JSON.stringify(photoData));
+            displayPhotos();
+        }
+
+        function displayPhotos() {
+            const photoData = JSON.parse(localStorage.getItem('photoData') || '[]');
+            const photoGrid = document.getElementById('photoGrid');
+            
+            if (photoData.length === 0) {
+                photoGrid.innerHTML = '<div class="no-data" style="padding: 40px; text-align: center; color: #999; grid-column: 1 / -1;">Upload your first progress photo</div>';
+                return;
+            }
+            
+            let html = '';
+            photoData.slice(-12).forEach(photo => { // Show last 12 photos
+                const date = new Date(photo.date).toLocaleDateString();
+                
+                html += `
+                    <div class="photo-item">
+                        <img src="${photo.image}" alt="Progress photo">
+                        <div class="photo-type">${photo.type}</div>
+                        <div class="photo-date">${date}</div>
+                        <button class="delete-btn" onclick="deletePhoto(${photo.id})" title="Delete photo">×</button>
+                    </div>
+                `;
+            });
+            
+            photoGrid.innerHTML = html;
+        }
+
+        function deletePhoto(photoId) {
+            if (confirm('Delete this photo?')) {
+                const photoData = JSON.parse(localStorage.getItem('photoData') || '[]');
+                const filteredData = photoData.filter(photo => photo.id !== photoId);
+                localStorage.setItem('photoData', JSON.stringify(filteredData));
+                displayPhotos();
+            }
+        }
+
+        // Drag and drop for photo upload
+        document.addEventListener('DOMContentLoaded', function() {
+            const uploadArea = document.querySelector('.photo-upload-area');
+            
+            if (uploadArea) {
+                uploadArea.addEventListener('dragover', function(e) {
+                    e.preventDefault();
+                    this.classList.add('dragover');
+                });
+                
+                uploadArea.addEventListener('dragleave', function(e) {
+                    e.preventDefault();
+                    this.classList.remove('dragover');
+                });
+                
+                uploadArea.addEventListener('drop', function(e) {
+                    e.preventDefault();
+                    this.classList.remove('dragover');
+                    
+                    const files = e.dataTransfer.files;
+                    if (files.length > 0) {
+                        document.getElementById('photoInput').files = files;
+                        handlePhotoUpload({ target: { files: files } });
+                    }
                 });
             }
         });
-        
-        // Update display
-        const activeDaysCount = document.getElementById('active-days-count');
-        const activeDaysProgress = document.getElementById('active-days-progress');
-        const totalMinutesCount = document.getElementById('total-minutes-count');
-        const totalMinutesProgress = document.getElementById('total-minutes-progress');
-        
-        if (activeDaysCount) activeDaysCount.textContent = activeDays;
-        if (activeDaysProgress) activeDaysProgress.style.width = `${(activeDays / 5) * 100}%`;
-        if (totalMinutesCount) totalMinutesCount.textContent = totalMinutes;
-        if (totalMinutesProgress) totalMinutesProgress.style.width = `${Math.min((totalMinutes / 150) * 100, 100)}%`;
-    }
 
-    // Initialize movement tab when switching to it
-    function initMovementTab() {
-        displayDailyMovementSuggestions();
-        displayDailyActivities();
-        updateWeeklyGoals();
-    }
-
-    // Close modal functionality
-    document.addEventListener('DOMContentLoaded', function() {
-        const modal = document.getElementById('program-modal');
-        const closeBtn = document.querySelector('.close-btn');
-        
-        if (closeBtn) {
-            closeBtn.onclick = function() {
-                if (modal) modal.style.display = 'none';
-            };
+        // Initialize body tracking data display
+        function initializeBodyTracking() {
+            displayWeightData();
+            updateWeightChart();
+            displayMeasurementData();
+            displayPhotos();
         }
-        
-        window.onclick = function(event) {
-            if (event.target === modal && modal) {
-                modal.style.display = 'none';
-            }
-        };
-    });
 
-    // Initialize everything when page loads
-    document.addEventListener('DOMContentLoaded', function() {
-        updateDailyScripture();
-        updatePhaseButton();
-        updateDisplay();
-        initializeGoals();
-        initializeTabs();
-        initializeProgress();
-        initializeFaith();
-        initializeBodyTracking();
-    });
-
-</script>
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            updateDailyScripture();
+            updatePhaseButton();
+            updateDisplay();
+            initializeGoals();
+            initializeTabs();
+            initializeProgress();
+            initializeFaith();
+            initializeBodyTracking();
+        });
+    </script>
 </body>
 </html>
