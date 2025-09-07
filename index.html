@@ -2333,5 +2333,368 @@
             initializeBodyTracking();
         });
     </script>
+// Exercise program data
+const exercisePrograms = {
+    'energizing-morning-walk': {
+        title: '🚶‍♀️ Energizing Morning Walk',
+        intro: 'Start your day with gentle movement that wakes up your body and mind.',
+        exercises: [
+            {
+                name: 'Warm-up Stretches',
+                instruction: 'Gentle arm circles and leg swings for 2 minutes',
+                tip: 'Loosen up before you start walking'
+            },
+            {
+                name: 'Easy Pace Walk',
+                instruction: 'Walk at comfortable pace for 10-15 minutes',
+                tip: 'You should be able to hold a conversation'
+            },
+            {
+                name: 'Cool Down',
+                instruction: 'Slow walk for final 3 minutes, then gentle stretches',
+                tip: 'Let your heart rate gradually return to normal'
+            }
+        ],
+        safety: 'Wear comfortable shoes and stay hydrated',
+        encouragement: 'Morning movement sets a positive tone for your entire day!'
+    },
+    
+    'chair-stretches': {
+        title: '🪑 Chair Stretches',
+        intro: 'Perfect gentle movement when you need flexibility without getting up.',
+        exercises: [
+            {
+                name: 'Neck Rolls',
+                instruction: 'Slowly roll your head in gentle circles',
+                tip: '5 times each direction, very slowly'
+            },
+            {
+                name: 'Shoulder Blade Squeezes',
+                instruction: 'Pull shoulder blades together, hold briefly',
+                tip: '10 gentle squeezes, feel the stretch across chest'
+            },
+            {
+                name: 'Seated Spinal Twist',
+                instruction: 'Turn your torso left, then right, using chair back for support',
+                tip: 'Hold 15 seconds each side, breathe deeply'
+            },
+            {
+                name: 'Ankle Circles',
+                instruction: 'Lift feet slightly, rotate ankles in circles',
+                tip: '10 times each direction, both feet'
+            }
+        ],
+        safety: 'Move gently, never force any stretch',
+        encouragement: 'Even small movements make a big difference!'
+    },
+    
+    'balance-practice': {
+        title: '🧘‍♀️ Balance Practice',
+        intro: 'Improve your stability and confidence with these gentle balance exercises.',
+        exercises: [
+            {
+                name: 'Standing on One Foot',
+                instruction: 'Hold onto a chair, lift one foot slightly off ground',
+                tip: 'Start with 5 seconds, work up to 10 seconds each foot'
+            },
+            {
+                name: 'Heel-to-Toe Walking',
+                instruction: 'Walk in a straight line, placing heel directly in front of toes',
+                tip: 'Take 10 slow, deliberate steps'
+            },
+            {
+                name: 'Weight Shifts',
+                instruction: 'Shift weight from side to side, lifting one foot slightly',
+                tip: 'Hold for 5 seconds each side, repeat 5 times'
+            }
+        ],
+        safety: 'Always have support nearby',
+        encouragement: 'Perfect practice makes progress, not perfection!'
+    },
+    
+    'garden-therapy': {
+        title: '🌱 Garden Therapy',
+        intro: 'Combine gentle movement with the joy of nurturing plants.',
+        exercises: [
+            {
+                name: 'Gentle Digging',
+                instruction: 'Light soil work using small tools',
+                tip: 'Squat or kneel safely, change positions frequently'
+            },
+            {
+                name: 'Watering Movement',
+                instruction: 'Carry light watering can, gentle reaching motions',
+                tip: 'Use both hands, take breaks every 5 minutes'
+            },
+            {
+                name: 'Harvesting Stretches',
+                instruction: 'Gentle reaching and bending to tend plants',
+                tip: 'Listen to your body, move slowly and mindfully'
+            }
+        ],
+        safety: 'Use proper tools, avoid heavy lifting',
+        encouragement: 'Gardening nourishes both body and soul!'
+    },
+    
+    'dance-break': {
+        title: '💃 Dance Break',
+        intro: 'Joyful movement to your favorite music - no experience needed!',
+        exercises: [
+            {
+                name: 'Simple Sway',
+                instruction: 'Gentle side-to-side movement with the beat',
+                tip: 'Start with slow songs, let the music move you'
+            },
+            {
+                name: 'Arm Movements',
+                instruction: 'Graceful arm movements while standing or sitting',
+                tip: 'Express yourself - there are no wrong moves!'
+            },
+            {
+                name: 'Gentle Stepping',
+                instruction: 'Step in place or take small steps around room',
+                tip: 'Focus on how the movement feels, not how it looks'
+            }
+        ],
+        safety: 'Clear space around you, start slowly',
+        encouragement: 'Dance like nobody is watching - because they\'re not!'
+    },
+    
+    'water-movement': {
+        title: '💧 Water Movement',
+        intro: 'Low-impact exercises in water - gentle on joints, great for fitness.',
+        exercises: [
+            {
+                name: 'Water Walking',
+                instruction: 'Walk across pool in chest-deep water',
+                tip: 'Water provides natural resistance and support'
+            },
+            {
+                name: 'Gentle Water Jogging',
+                instruction: 'Jogging motion in deep water with flotation if needed',
+                tip: 'Focus on form, let water support your body weight'
+            },
+            {
+                name: 'Pool Stretches',
+                instruction: 'Use pool edge for support while stretching legs',
+                tip: 'Warm water helps muscles relax and stretch easier'
+            }
+        ],
+        safety: 'Never exercise alone in water, use pool ladder safely',
+        encouragement: 'Water exercise is incredibly therapeutic for body and mind!'
+    }
+};
+
+// Create popup HTML dynamically
+function createPopupHTML() {
+    const popupContainer = document.createElement('div');
+    popupContainer.innerHTML = `
+        <div class="exercise-popup" id="exercise-popup" style="
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            padding: 20px;
+            box-sizing: border-box;
+        ">
+            <div class="popup-content" style="
+                background: white;
+                max-width: 400px;
+                margin: 10% auto;
+                border-radius: 12px;
+                padding: 20px;
+                max-height: 80vh;
+                overflow-y: auto;
+                position: relative;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            ">
+                <div class="popup-header" style="
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 15px;
+                    padding-bottom: 10px;
+                    border-bottom: 2px solid rgba(139, 168, 137, 0.2);
+                ">
+                    <div class="popup-title" style="
+                        color: #8BA889;
+                        font-size: 18px;
+                        font-weight: 600;
+                    "></div>
+                    <button class="close-btn" style="
+                        background: none;
+                        border: none;
+                        font-size: 24px;
+                        cursor: pointer;
+                        color: #999;
+                        padding: 0;
+                        width: 30px;
+                        height: 30px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    ">&times;</button>
+                </div>
+                <div class="program-intro" style="
+                    color: #555;
+                    font-size: 14px;
+                    margin-bottom: 15px;
+                    line-height: 1.5;
+                "></div>
+                <div class="exercise-list"></div>
+                <div class="program-footer" style="
+                    background: rgba(139, 168, 137, 0.05);
+                    border-radius: 8px;
+                    padding: 12px;
+                    margin-top: 15px;
+                    text-align: center;
+                ">
+                    <div class="safety-note" style="
+                        color: #d67e00;
+                        font-size: 12px;
+                        font-weight: 600;
+                        margin-bottom: 5px;
+                    "></div>
+                    <div class="encouragement" style="
+                        color: #8BA889;
+                        font-size: 11px;
+                        font-style: italic;
+                    "></div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(popupContainer.firstElementChild);
+}
+
+// Make movement cards clickable
+function setupMovementPopups() {
+    // Create the popup HTML
+    createPopupHTML();
+    
+    // Get references to popup elements
+    const popup = document.getElementById('exercise-popup');
+    const closeBtn = popup.querySelector('.close-btn');
+    const popupTitle = popup.querySelector('.popup-title');
+    const programIntro = popup.querySelector('.program-intro');
+    const exerciseList = popup.querySelector('.exercise-list');
+    const safetyNote = popup.querySelector('.safety-note');
+    const encouragement = popup.querySelector('.encouragement');
+    
+    // Find all movement cards (they have the green background)
+    const movementCards = document.querySelectorAll('.suggestions-grid > div');
+    
+    movementCards.forEach(card => {
+        // Make card clickable
+        card.style.cursor = 'pointer';
+        card.style.transition = 'all 0.3s ease';
+        
+        // Add hover effect
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-2px)';
+            card.style.boxShadow = '0 4px 8px rgba(0,0,0,0.1)';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0)';
+            card.style.boxShadow = 'none';
+        });
+        
+        // Add click event
+        card.addEventListener('click', () => {
+            // Get the card text to determine which program to show
+            const cardText = card.textContent.toLowerCase();
+            let programKey = '';
+            
+            if (cardText.includes('morning walk')) programKey = 'energizing-morning-walk';
+            else if (cardText.includes('chair')) programKey = 'chair-stretches';
+            else if (cardText.includes('balance')) programKey = 'balance-practice';
+            else if (cardText.includes('garden')) programKey = 'garden-therapy';
+            else if (cardText.includes('dance')) programKey = 'dance-break';
+            else if (cardText.includes('water')) programKey = 'water-movement';
+            
+            if (programKey && exercisePrograms[programKey]) {
+                showExerciseProgram(exercisePrograms[programKey]);
+            }
+        });
+    });
+    
+    // Close popup functionality
+    closeBtn.addEventListener('click', () => {
+        popup.style.display = 'none';
+    });
+    
+    // Close when clicking outside
+    popup.addEventListener('click', (e) => {
+        if (e.target === popup) {
+            popup.style.display = 'none';
+        }
+    });
+    
+    // Close with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && popup.style.display === 'block') {
+            popup.style.display = 'none';
+        }
+    });
+    
+    function showExerciseProgram(program) {
+        // Fill in the popup content
+        popupTitle.textContent = program.title;
+        programIntro.textContent = program.intro;
+        safetyNote.textContent = '⚠️ ' + program.safety;
+        encouragement.textContent = program.encouragement;
+        
+        // Create exercise list
+        exerciseList.innerHTML = '';
+        program.exercises.forEach(exercise => {
+            const exerciseItem = document.createElement('div');
+            exerciseItem.style.cssText = `
+                background: rgba(139, 168, 137, 0.05);
+                border: 1px solid rgba(139, 168, 137, 0.2);
+                border-radius: 8px;
+                padding: 12px;
+                margin-bottom: 10px;
+            `;
+            
+            exerciseItem.innerHTML = `
+                <div style="
+                    font-weight: 600;
+                    color: #8BA889;
+                    font-size: 14px;
+                    margin-bottom: 5px;
+                ">${exercise.name}</div>
+                <div style="
+                    color: #666;
+                    font-size: 13px;
+                    line-height: 1.4;
+                    margin-bottom: 3px;
+                ">${exercise.instruction}</div>
+                <div style="
+                    color: #8BA889;
+                    font-size: 11px;
+                    font-style: italic;
+                ">${exercise.tip}</div>
+            `;
+            
+            exerciseList.appendChild(exerciseItem);
+        });
+        
+        // Show the popup
+        popup.style.display = 'block';
+    }
+}
+
+// Initialize when page loads
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupMovementPopups);
+} else {
+    setupMovementPopups();
+}
 </body>
 </html>
