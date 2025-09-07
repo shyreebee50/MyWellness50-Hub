@@ -987,6 +987,7 @@
                 <button class="tab-button active" data-tab="daily">Daily</button>
                 <button class="tab-button" data-tab="faith">Faith</button>
                 <button class="tab-button" data-tab="progress">Progress</button>
+                <button class="tab-button" data-tab="movement">Movement</button>
                 <button class="tab-button" data-tab="settings">Settings</button>
             </div>
         </div>
@@ -1331,7 +1332,75 @@
                 </div>
             </div>
         </div>
+<!-- Movement Tab Content -->
+        <div class="tab-content" id="movement-tab">
+            <div class="content-card">
+                <h2 class="section-title">Movement & Exercise</h2>
+                <div class="scripture-text">
+                    "Movement is a medicine for creating change in a person's physical, emotional, and mental states."
+                </div>
+                <div class="scripture-reference">- Carol Welch</div>
+            </div>
 
+            <div class="content-card">
+                <h4 class="section-title">Today's Movement Log</h4>
+                <div style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center;">
+                    <select id="activity-type">
+                        <option value="">Select Activity</option>
+                        <option value="walking">Walking</option>
+                        <option value="stretching">Stretching</option>
+                        <option value="yoga">Yoga</option>
+                        <option value="strength">Light Strength Training</option>
+                        <option value="dance">Dancing</option>
+                        <option value="swimming">Swimming</option>
+                        <option value="gardening">Gardening</option>
+                        <option value="balance">Balance Exercises</option>
+                        <option value="tai-chi">Tai Chi</option>
+                    </select>
+                    
+                    <input type="number" id="duration" placeholder="Minutes" min="1" max="300" style="padding: 8px;">
+                    
+                    <select id="intensity">
+                        <option value="light">Light</option>
+                        <option value="moderate">Moderate</option>
+                        <option value="vigorous">Vigorous</option>
+                    </select>
+                    
+                    <button onclick="logMovement()" class="add-btn">Log Activity</button>
+                </div>
+                
+                <div id="daily-activities" style="min-height: 100px; background: rgba(248, 249, 250, 0.7); border-radius: 8px; padding: 15px;">
+                    <div style="text-align: center; color: #999; padding: 20px;">
+                        No activities logged today. Start moving!
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h4 class="section-title">Weekly Goals</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                    <div style="background: linear-gradient(135deg, #f0f9f0 0%, #e8f5e8 100%); border-radius: 12px; padding: 20px; text-align: center;">
+                        <h5 style="color: #2d5a2d; margin-bottom: 10px;">Active Days</h5>
+                        <div style="font-size: 1.2rem; font-weight: 600; color: #4a7c59; margin-bottom: 10px;">
+                            <span id="active-days-count">0</span> / 5 days
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="active-days-progress"></div>
+                        </div>
+                    </div>
+                    
+                    <div style="background: linear-gradient(135deg, #f0f9f0 0%, #e8f5e8 100%); border-radius: 12px; padding: 20px; text-align: center;">
+                        <h5 style="color: #2d5a2d; margin-bottom: 10px;">Total Minutes</h5>
+                        <div style="font-size: 1.2rem; font-weight: 600; color: #4a7c59; margin-bottom: 10px;">
+                            <span id="total-minutes-count">0</span> / 150 min
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="total-minutes-progress"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Settings Tab (placeholder) -->
         <div class="tab-content" id="settings-tab">
             <div class="content-card">
@@ -1592,6 +1661,10 @@
             if (tabName === 'faith') {
                 updateDailyVerse();
             }
+           // Initialize movement tab when switching to it
+            if (tabName === 'movement') {
+                initMovementTab();
+}
         }
 
         // Goals functionality
@@ -2257,6 +2330,111 @@
             initializeFaith();
             initializeBodyTracking();
         });
+    // Movement Tab Functions
+        function logMovement() {
+            const activityType = document.getElementById('activity-type').value;
+            const duration = document.getElementById('duration').value;
+            const intensity = document.getElementById('intensity').value;
+            
+            if (!activityType || !duration) {
+                alert('Please select an activity type and enter duration.');
+                return;
+            }
+            
+            const today = new Date().toISOString().split('T')[0];
+            let activities = JSON.parse(localStorage.getItem('movement-activities') || '{}');
+            
+            if (!activities[today]) {
+                activities[today] = [];
+            }
+            
+            const newActivity = {
+                type: activityType,
+                duration: parseInt(duration),
+                intensity: intensity,
+                timestamp: new Date().toLocaleTimeString()
+            };
+            
+            activities[today].push(newActivity);
+            localStorage.setItem('movement-activities', JSON.stringify(activities));
+            
+            // Clear form
+            document.getElementById('activity-type').value = '';
+            document.getElementById('duration').value = '';
+            document.getElementById('intensity').value = 'light';
+            
+            // Refresh displays
+            displayDailyActivities();
+            updateWeeklyGoals();
+        }
+
+        function displayDailyActivities() {
+            const container = document.getElementById('daily-activities');
+            if (!container) return;
+            
+            const today = new Date().toISOString().split('T')[0];
+            const activities = JSON.parse(localStorage.getItem('movement-activities') || '{}');
+            const todayActivities = activities[today] || [];
+            
+            if (todayActivities.length === 0) {
+                container.innerHTML = '<div style="text-align: center; color: #999; padding: 20px;">No activities logged today. Start moving!</div>';
+                return;
+            }
+            
+            container.innerHTML = todayActivities.map(activity => `
+                <div style="background: white; border-radius: 8px; padding: 10px; margin-bottom: 10px; border-left: 4px solid #4a7c59; display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <strong>${activity.type.charAt(0).toUpperCase() + activity.type.slice(1)}</strong> - 
+                        ${activity.duration} minutes (${activity.intensity})
+                    </div>
+                    <div style="color: #666; font-size: 0.9rem;">${activity.timestamp}</div>
+                </div>
+            `).join('');
+        }
+
+        function updateWeeklyGoals() {
+            const activities = JSON.parse(localStorage.getItem('movement-activities') || '{}');
+            
+            // Get current week's data
+            const today = new Date();
+            const weekStart = new Date(today.setDate(today.getDate() - today.getDay()));
+            const weekDays = [];
+            
+            for (let i = 0; i < 7; i++) {
+                const day = new Date(weekStart);
+                day.setDate(weekStart.getDate() + i);
+                weekDays.push(day.toISOString().split('T')[0]);
+            }
+            
+            let activeDays = 0;
+            let totalMinutes = 0;
+            
+            weekDays.forEach(day => {
+                if (activities[day] && activities[day].length > 0) {
+                    activeDays++;
+                    activities[day].forEach(activity => {
+                        totalMinutes += activity.duration;
+                    });
+                }
+            });
+            
+            // Update display
+            const activeDaysCount = document.getElementById('active-days-count');
+            const activeDaysProgress = document.getElementById('active-days-progress');
+            const totalMinutesCount = document.getElementById('total-minutes-count');
+            const totalMinutesProgress = document.getElementById('total-minutes-progress');
+            
+            if (activeDaysCount) activeDaysCount.textContent = activeDays;
+            if (activeDaysProgress) activeDaysProgress.style.width = `${(activeDays / 5) * 100}%`;
+            if (totalMinutesCount) totalMinutesCount.textContent = totalMinutes;
+            if (totalMinutesProgress) totalMinutesProgress.style.width = `${Math.min((totalMinutes / 150) * 100, 100)}%`;
+        }
+
+        // Initialize movement tab when switching to it
+        function initMovementTab() {
+            displayDailyActivities();
+            updateWeeklyGoals();
+        }
     </script>
 </body>
 </html>
