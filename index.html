@@ -976,6 +976,41 @@
                 grid-template-columns: repeat(2, 1fr);
             }
         }
+   /* Movement Tab Exercise Cards */
+.movement-suggestions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.suggestion-card {
+    background: linear-gradient(135deg, #e8f5e8 0%, #f0f9f0 100%);
+    border: 2px solid transparent;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.suggestion-card:hover {
+    border-color: #4a7c59;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(74, 124, 89, 0.2);
+}
+
+.suggestion-card h5 {
+    color: #2d5a2d;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.suggestion-card p {
+    color: #4a7c59;
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
     </style>
 </head>
 <body>
@@ -1340,7 +1375,36 @@
             "Movement is a medicine for creating change in a person's physical, emotional, and mental states."
         </div>
         <div class="scripture-reference">- Carol Welch</div>
-        <p>Movement tab is working! We'll add features step by step.</p>
+    </div>
+    <!-- Movement Tab Content -->
+    <div class="content-card">
+        <h4 class="section-title">Movement Ideas for Today</h4>
+        <div class="movement-suggestions">
+            <div class="suggestion-card">
+                <h5>Energizing Morning Walk</h5>
+                <p>15-minute gentle pace</p>
+            </div>
+            <div class="suggestion-card">
+                <h5>Chair Stretches</h5>
+                <p>10-minute flexibility</p>
+            </div>
+            <div class="suggestion-card">
+                <h5>Balance Practice</h5>
+                <p>10-minute stability work</p>
+            </div>
+            <div class="suggestion-card">
+                <h5>Garden Therapy</h5>
+                <p>20-minute outdoor movement</p>
+            </div>
+            <div class="suggestion-card">
+                <h5>Dance Break</h5>
+                <p>10-minute joyful dancing</p>
+            </div>
+            <div class="suggestion-card">
+                <h5>Water Movement</h5>
+                <p>20-minute low-impact pool work</p>
+            </div>
+        </div>
     </div>
 </div>
         <!-- Settings Tab (placeholder) -->
