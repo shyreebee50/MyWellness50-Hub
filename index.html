@@ -2765,12 +2765,12 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     }
     
-  window.onclick = function(event) {
+    window.onclick = function(event) {
         if (event.target === modal && modal) {
             modal.style.display = 'none';
         }
     };
-}); 
+}); // This closes the document.addEventListener - it was already correct
 
 </script>
 </body>
