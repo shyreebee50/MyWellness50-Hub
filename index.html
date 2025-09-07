@@ -552,6 +552,123 @@
             color: #666;
         }
 
+        /* Faith Tab Styles */
+        .content-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 18px;
+            padding: 25px 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            margin-bottom: 25px;
+        }
+
+        .verse-text {
+            font-size: 1.3rem;
+            line-height: 1.7;
+            color: #333;
+            font-style: italic;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .verse-reference {
+            font-size: 1rem;
+            color: #4a7c7c;
+            font-weight: 600;
+        }
+
+        .devotional-content {
+            line-height: 1.7;
+            color: #444;
+            margin-bottom: 30px;
+        }
+
+        .devotional-content p {
+            margin-bottom: 15px;
+        }
+
+        .faith-tracker {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .tracker-item {
+            background: rgba(248, 250, 252, 0.8);
+            border-radius: 12px;
+            padding: 18px;
+            text-align: center;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tracker-item:hover {
+            border-color: rgba(74, 124, 124, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .tracker-item.completed {
+            background: rgba(45, 90, 45, 0.1);
+            border-color: #2d5a2d;
+        }
+
+        .tracker-icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .tracker-label {
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .tracker-description {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .gratitude-list {
+            list-style: none;
+        }
+
+        .gratitude-item {
+            background: rgba(248, 250, 252, 0.8);
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin-bottom: 12px;
+            border-left: 4px solid #2d5a2d;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .gratitude-number {
+            color: #4a7c7c;
+            font-weight: 600;
+            margin-right: 12px;
+            min-width: 25px;
+        }
+
+        .gratitude-text {
+            flex-grow: 1;
+            color: #444;
+            line-height: 1.5;
+        }
+
+        .gratitude-text:focus {
+            outline: none;
+            color: #2d5a2d;
+        }
+
+        .gratitude-text:empty::before {
+            content: attr(placeholder);
+            color: #999;
+            font-style: italic;
+        }
+
         @media (max-width: 768px) {
             .fasting-boxes {
                 grid-template-columns: 1fr;
@@ -574,6 +691,14 @@
                 gap: 5px;
                 align-items: flex-end;
             }
+
+            .faith-tracker {
+                grid-template-columns: 1fr;
+            }
+
+            .verse-text {
+                font-size: 1.1rem;
+            }
         }
     </style>
 </head>
@@ -584,6 +709,7 @@
             <h2>My Healing Journey</h2>
             <div class="tab-nav">
                 <button class="tab-button active" data-tab="daily">Daily</button>
+                <button class="tab-button" data-tab="faith">Faith</button>
                 <button class="tab-button" data-tab="progress">Progress</button>
                 <button class="tab-button" data-tab="settings">Settings</button>
             </div>
@@ -749,6 +875,87 @@
                         <div class="no-data">Start tracking your goals to see progress charts!</div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Faith Tab Content -->
+        <div class="tab-content" id="faith-tab">
+            <div class="content-card">
+                <div class="scripture-display">
+                    <div class="verse-text" id="dailyVerse">
+                        "Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight."
+                    </div>
+                    <div class="verse-reference" id="dailyReference">
+                        Proverbs 3:5-6
+                    </div>
+                </div>
+
+                <h2 class="section-title">Today's Devotion</h2>
+                <div class="devotional-content" id="devotionalContent">
+                    <p>Today's passage reminds us of the importance of surrendering our understanding to God's wisdom. In our wellness journey, this means trusting that God's timing and methods are perfect, even when we can't see the full picture.</p>
+                    
+                    <p>As you work toward your health goals, remember that your body is a temple of the Holy Spirit. Each healthy choice you make is an act of worship and stewardship of the gift God has given you.</p>
+                    
+                    <p>Take time today to surrender your worries about your progress to Him. Trust that He is working in you and through you, creating lasting change that goes beyond the physical realm.</p>
+                </div>
+
+                <div class="faith-tracker">
+                    <div class="tracker-item" data-activity="devotion-read">
+                        <div class="tracker-icon">📖</div>
+                        <div class="tracker-label">Read Devotion</div>
+                        <div class="tracker-description">Today's spiritual reading</div>
+                    </div>
+                    <div class="tracker-item" data-activity="morning-prayer">
+                        <div class="tracker-icon">🌅</div>
+                        <div class="tracker-label">Morning Prayer</div>
+                        <div class="tracker-description">Start the day with God</div>
+                    </div>
+                    <div class="tracker-item" data-activity="evening-prayer">
+                        <div class="tracker-icon">🌙</div>
+                        <div class="tracker-label">Evening Prayer</div>
+                        <div class="tracker-description">End the day in gratitude</div>
+                    </div>
+                    <div class="tracker-item" data-activity="worship">
+                        <div class="tracker-icon">🎵</div>
+                        <div class="tracker-label">Worship Time</div>
+                        <div class="tracker-description">Music and praise</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h2 class="section-title">Daily Gratitude</h2>
+                
+                <ul class="gratitude-list" id="gratitudeList">
+                    <li class="gratitude-item">
+                        <span class="gratitude-number">1.</span>
+                        <div class="gratitude-text" contenteditable="true" placeholder="I am grateful for...">I am grateful for the gift of life and another day to serve You</div>
+                    </li>
+                    <li class="gratitude-item">
+                        <span class="gratitude-number">2.</span>
+                        <div class="gratitude-text" contenteditable="true" placeholder="I am grateful for...">I am grateful for my body and its ability to heal and grow stronger</div>
+                    </li>
+                    <li class="gratitude-item">
+                        <span class="gratitude-number">3.</span>
+                        <div class="gratitude-text" contenteditable="true" placeholder="I am grateful for...">I am grateful for the wisdom and strength You provide daily</div>
+                    </li>
+                    <li class="gratitude-item">
+                        <span class="gratitude-number">4.</span>
+                        <div class="gratitude-text" contenteditable="true" placeholder="I am grateful for...">I am grateful for the people You have placed in my life for support</div>
+                    </li>
+                    <li class="gratitude-item">
+                        <span class="gratitude-number">5.</span>
+                        <div class="gratitude-text" contenteditable="true" placeholder="I am grateful for...">I am grateful for Your grace and mercy that never fail</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Settings Tab (placeholder) -->
+        <div class="tab-content" id="settings-tab">
+            <div class="content-card">
+                <h2 class="section-title">Settings</h2>
+                <p style="text-align: center; color: #666;">Settings functionality coming soon...</p>
             </div>
         </div>
     </div>
@@ -984,6 +1191,7 @@
         initializeGoals();
         initializeTabs();
         initializeProgress();
+        initializeFaith();
 
         // Tab functionality
         function initializeTabs() {
@@ -1007,6 +1215,11 @@
             // Update progress when switching to progress tab
             if (tabName === 'progress') {
                 updateProgressDisplay();
+            }
+
+            // Update faith content when switching to faith tab
+            if (tabName === 'faith') {
+                updateDailyVerse();
             }
         }
 
@@ -1217,35 +1430,3 @@
             
             // Load saved progress for today
             loadGoalProgress();
-        }
-
-        function saveGoalProgress() {
-            const today = new Date().toDateString();
-            const goals = {};
-            
-            document.querySelectorAll('.goal-item').forEach(item => {
-                const goalId = item.dataset.goal;
-                goals[goalId] = item.classList.contains('completed');
-            });
-            
-            localStorage.setItem(`goals_${today}`, JSON.stringify(goals));
-        }
-
-        function loadGoalProgress() {
-            const today = new Date().toDateString();
-            const savedGoals = localStorage.getItem(`goals_${today}`);
-            
-            if (savedGoals) {
-                const goals = JSON.parse(savedGoals);
-                
-                document.querySelectorAll('.goal-item').forEach(item => {
-                    const goalId = item.dataset.goal;
-                    if (goals[goalId]) {
-                        item.classList.add('completed');
-                    }
-                });
-            }
-        }
-    </script>
-</body>
-</html>
